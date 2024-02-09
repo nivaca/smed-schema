@@ -8,7 +8,7 @@ namespace teix = "http://www.tei-c.org/ns/Examples"
 namespace xi = "http://www.w3.org/2001/XInclude"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2023-12-22T03:36:24Z. .
+# Schema generated from ODD source 2024-02-09T20:58:49Z. .
 # TEI Edition: Version 3.1.0. Last updated on
 #	15th December 2016, revision d3f5e70
 # TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.1.0/
@@ -6391,18 +6391,88 @@ rdg =
      | model.inter
      | model.global
      | model.rdgPart)*,
-    att.global.attributes,
+    att.global.attribute.xmlid,
+    att.global.attribute.n,
+    att.global.attribute.xmllang,
+    att.global.attribute.xmlbase,
+    att.global.attribute.xmlspace,
+    att.global.rendition.attribute.rend,
+    att.global.rendition.attribute.style,
+    att.global.rendition.attribute.rendition,
+    att.global.linking.attribute.corresp,
+    att.global.linking.attribute.synch,
+    att.global.linking.attribute.sameAs,
+    att.global.linking.attribute.copyOf,
+    att.global.linking.attribute.next,
+    att.global.linking.attribute.prev,
+    att.global.linking.attribute.exclude,
+    att.global.linking.attribute.select,
+    att.global.facs.attribute.facs,
+    att.global.change.attribute.change,
+    att.global.responsibility.attribute.cert,
+    att.global.responsibility.attribute.resp,
+    att.global.source.attribute.source,
     att.textCritical.attribute.cause,
     att.textCritical.attribute.varSeq,
     att.textCritical.attribute.require,
     att.written.attribute.hand,
     att.witnessed.attributes,
+    [
+      a:documentation [
+        "(analysis) indicates one or more elements containing interpretations of the element on which the "
+        ns1:code [ "@ana" ]
+        " attribute appears."
+      ]
+    ]
+    attribute ana {
+      list {
+        (
+         ## (b/p) gibbosum>gipposum
+         "b/p"
+         | 
+           ## (capitalization) capitalization
+           "cap"
+         | 
+           ## (c/qu) persequutione>persecutione
+           "c/qu"
+         | 
+           ## (c/t) altior>alcior
+           "c/t"
+         | 
+           ## (ch>h) nihil>nichil
+           "ch/h"
+         | 
+           ## (doubling) catus>cattus
+           "doub"
+         | 
+           ## (h) nil>nihil
+           "h"
+         | 
+           ## (i/y) ait>ayt
+           "i/y"
+         | 
+           ## (mn/mpn) damnum>dampnum
+           "mn/mpn"
+         | 
+           ## (parenthesis) The inclusion/elimination of opening/closing parentheses.
+           "par"
+         | 
+           ## (s/z) asinus>azinus
+           "s/z"
+         | 
+           ## (word separation) nonnihil>non nihil
+           "sep"
+         | 
+           ## (Introduction/elimination of letters not analyzable otherwise.) nihil>nil
+           "ø")+
+      }
+    }?,
     (
      ## classifies the reading according to some useful typology.
      ## Suggested values include: 1] variation-absent (variation-absent); 2] variation-present (variation-present); 3] variation-substance (variation-substance); 4] variation-orthography (variation-orthography); 5] variation-choice (variation-choice); 6] variation-inversion (variation-inversion); 7] correction-addition (correction-addition); 8] correction-deletion (correction-deletion); 9] correction-substitution (correction-substitution); 10] correction-transposition (correction-transposition); 11] deletion-of-addition (Correction cancellation: deletion-of-addition); 12] deletion-of-deletion (Correction cancellation: deletion-of-deletion); 13] deletion-of-substitution (Correction cancellation: deletion-of-substitution); 14] substitution-of-addition (Correction cancellation: substitution-of-addition); 15] conjecture-supplied (conjecture-supplied); 16] conjecture-removed (conjecture-removed); 17] conjecture-corrected (conjecture-corrected); 18] manual (manual)
      attribute type {
        
-       ## (variation-absent) indicates that the witness in question lacks the designated lemma; often rendered as "omit." or "omitted" 
+       ## (variation-absent) indicates that the witness in question lacks the designated lemma; often rendered as "omit." or "omitted"
        "variation-absent"
        | 
          ## (variation-present) indicates that the witness in question contains a word or phrase not included in the critical text.

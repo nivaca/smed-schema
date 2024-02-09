@@ -9,7 +9,7 @@
         <title>LombardPress Customization File</title>
         <author xml:id="JeffreyWitt">Jeffrey C. Witt</author>
         <author xml:id="MichaelChristensen">Michael Stenskjær Christensen</author>
-        <author xml:id="NicolasVaughan">Nicolas Vaughan</author>
+        <author xml:id="nivaca">Nicolas Vaughan</author>
       </titleStmt>
       <publicationStmt>
         <authority>An SCTA and LombardPress Collaboration Project</authority>
@@ -20,6 +20,7 @@
     </fileDesc>
     <revisionDesc status="draft">
       <change who="#JeffreyWitt" when="2012-05-08" n="0.0.0-dev"></change>
+      <change who="#nivaca" when="2024-02-09" n="0.0.1-dev"></change>
     </revisionDesc>
   </teiHeader>
   <text>
@@ -305,6 +306,11 @@
         <!-- Name and Date Module -->
         <moduleRef key="namesdates"/>
         
+        
+        
+        
+        
+        
         <!-- Text Criticism Module -->
         <moduleRef key="textcrit"/>
         
@@ -522,11 +528,72 @@
                   <desc>manual rdg type input</desc>
                 </valItem>
               </valList>
+              
+              
+            </attDef>
+            
+            <attDef ident="ana" mode="change" usage="opt">
+              <valList type="closed" mode="add">
+                <valItem ident="b/p">
+                  <gloss>b/p</gloss>
+                  <desc>gibbosum>gipposum</desc>
+                </valItem>
+                <valItem ident="cap">
+                  <gloss>capitalization</gloss>
+                  <desc>capitalization</desc>
+                </valItem>
+                <valItem ident="c/qu">
+                  <gloss>c/qu</gloss>
+                  <desc>persequutione>persecutione</desc>
+                </valItem>
+                <valItem ident="c/t">
+                  <gloss>c/t</gloss>
+                  <desc>altior>alcior</desc>
+                </valItem>
+                <valItem ident="ch/h">
+                  <gloss>ch>h</gloss>
+                  <desc>nihil>nichil</desc>
+                </valItem>
+                <valItem ident="doub">
+                  <gloss>doubling</gloss>
+                  <desc>catus>cattus</desc>
+                </valItem>
+                <valItem ident="h">
+                  <gloss>h</gloss>
+                  <desc>nil>nihil</desc>
+                </valItem>
+                <valItem ident="i/y">
+                  <gloss>i/y</gloss>
+                  <desc>ait>ayt</desc>
+                </valItem>
+                <valItem ident="mn/mpn">
+                  <gloss>mn/mpn</gloss>
+                  <desc>damnum>dampnum</desc>
+                </valItem>
+                <valItem ident="par">
+                  <gloss>parenthesis</gloss>
+                  <desc>The inclusion/elimination of opening/closing parentheses.</desc>
+                </valItem>
+                <valItem ident="s/z">
+                  <gloss>s/z</gloss>
+                  <desc>asinus>azinus</desc>
+                </valItem>
+                <valItem ident="sep">
+                  <gloss>word separation</gloss>
+                  <desc>nonnihil>non nihil</desc>
+                </valItem>
+                <valItem ident="ø">
+                  <gloss>Introduction/elimination of letters not analyzable otherwise.</gloss>
+                  <desc>nihil>nil</desc>
+                </valItem>
+              </valList>
             </attDef>
             
           </attList>
           
         </elementSpec>
+        
+        
         
         <!-- The lem element -->
         <elementSpec ident="lem" module="textcrit" mode="change">
