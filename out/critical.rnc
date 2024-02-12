@@ -8,7 +8,7 @@ namespace teix = "http://www.tei-c.org/ns/Examples"
 namespace xi = "http://www.w3.org/2001/XInclude"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2024-02-09T20:58:49Z. .
+# Schema generated from ODD source 2024-02-12T22:23:59Z. .
 # TEI Edition: Version 3.1.0. Last updated on
 #	15th December 2016, revision d3f5e70
 # TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.1.0/
@@ -6432,6 +6432,9 @@ rdg =
          | 
            ## (capitalization) capitalization
            "cap"
+         | 
+           ## (contraction/expansion) audivisti>audisti
+           "con"
          | 
            ## (c/qu) persequutione>persecutione
            "c/qu"

@@ -6,21 +6,23 @@
   <teiHeader>
     <fileDesc>
       <titleStmt>
-        <title>LombardPress Customization File</title>
-        <author xml:id="JeffreyWitt">Jeffrey C. Witt</author>
-        <author xml:id="MichaelChristensen">Michael Stenskjær Christensen</author>
+        <title>Schema for SMED</title>
         <author xml:id="nivaca">Nicolas Vaughan</author>
       </titleStmt>
       <publicationStmt>
         <authority>An SCTA and LombardPress Collaboration Project</authority>
       </publicationStmt>
       <sourceDesc>
-        <p>Born Digital</p>
+        <p>
+          This schema is based on the LombardPress Critical Edition Schema 
+          and LombardPress Critical Transcription Guidelines, 
+          created by Jeffrey C. Witt, Michael Stenskjær and
+          Nicolas Vaughan. See here:
+          <ref>https://community.scta.info/pages/lombardpress-schema-critical.html</ref></p>
       </sourceDesc>
     </fileDesc>
     <revisionDesc status="draft">
-      <change who="#JeffreyWitt" when="2012-05-08" n="0.0.0-dev"></change>
-      <change who="#nivaca" when="2024-02-09" n="0.0.1-dev"></change>
+      <change who="#nivaca" when="2024-02-09" n="0.0.0-dev"></change>
     </revisionDesc>
   </teiHeader>
   <text>
@@ -541,6 +543,10 @@
                 <valItem ident="cap">
                   <gloss>capitalization</gloss>
                   <desc>capitalization</desc>
+                </valItem>
+                <valItem ident="con">
+                  <gloss>contraction/expansion</gloss>
+                  <desc>audivisti>audisti</desc>
                 </valItem>
                 <valItem ident="c/qu">
                   <gloss>c/qu</gloss>
