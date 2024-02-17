@@ -556,6 +556,10 @@
                   <gloss>c/t</gloss>
                   <desc>altior>alcior</desc>
                 </valItem>
+                <valItem ident="d/t">
+                  <gloss>d/t</gloss>
+                  <desc>inquid>inquit</desc>
+                </valItem>
                 <valItem ident="ch/h">
                   <gloss>ch>h</gloss>
                   <desc>nihil>nichil</desc>
