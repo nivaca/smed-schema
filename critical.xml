@@ -536,6 +536,10 @@
             
             <attDef ident="ana" mode="change" usage="opt">
               <valList type="closed" mode="add">
+                <valItem ident="ae/ę">
+                  <gloss>ae/ę</gloss>
+                  <desc>ursae>ursę</desc>
+                </valItem>
                 <valItem ident="b/p">
                   <gloss>b/p</gloss>
                   <desc>gibbosum>gipposum</desc>
