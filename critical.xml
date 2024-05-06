@@ -584,6 +584,10 @@
                   <gloss>mn/mpn</gloss>
                   <desc>damnum>dampnum</desc>
                 </valItem>
+                <valItem ident="oe/e">
+                  <gloss>oe/e</gloss>
+                  <desc>coena>cena</desc>
+                </valItem>
                 <valItem ident="par">
                   <gloss>parenthesis</gloss>
                   <desc>The inclusion/elimination of opening/closing parentheses.</desc>

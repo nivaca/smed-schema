@@ -8,10 +8,9 @@ namespace teix = "http://www.tei-c.org/ns/Examples"
 namespace xi = "http://www.w3.org/2001/XInclude"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2024-02-27T19:40:37Z. .
-# TEI Edition: Version 3.1.0. Last updated on
-#	15th December 2016, revision d3f5e70
-# TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 3.1.0/
+# Schema generated from ODD source 2024-05-06T01:19:29Z. . 
+# TEI Edition: Version 3.1.0. Last updated on 15th December 2016, revision d3f5e70 
+# TEI Edition Location: https://www.tei-c.org/Vault/P5/3.1.0/ 
 #
 
 #
@@ -34,10 +33,10 @@ macro.specialPara =
    | model.divPart
    | model.global)*
 macro.xtext = (text | model.gLike)*
-anyElement-xenoData =
+anyElement_xenoData_1 =
   element * - (tei:* | teix:egXML) {
     attribute * { text }*,
-    (text | anyElement-xenoData)*
+    (text | anyElement_xenoData_1)*
   }
 att.ascribed.attributes = att.ascribed.attribute.who
 att.ascribed.attribute.who =
@@ -4322,7 +4321,7 @@ xenoData =
   
   ## (non-TEI metadata) provides a container element into which metadata in non-TEI formats may be placed. [2.5. Non-TEI Metadata]
   element xenoData {
-    (text | anyElement-xenoData),
+    (text | anyElement_xenoData_1),
     att.global.attributes,
     att.declarable.attributes,
     att.typed.attributes,
@@ -6428,7 +6427,7 @@ rdg =
       list {
         (
          ## (ae/ę) ursae>ursę
-         "a/ę"
+         "ae/ę"
          | 
            ## (b/p) gibbosum>gipposum
            "b/p"
@@ -6462,6 +6461,9 @@ rdg =
          | 
            ## (mn/mpn) damnum>dampnum
            "mn/mpn"
+         | 
+           ## (oe/e) coena>cena
+           "oe/e"
          | 
            ## (parenthesis) The inclusion/elimination of opening/closing parentheses.
            "par"
