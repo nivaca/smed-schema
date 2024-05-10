@@ -592,6 +592,10 @@
                   <gloss>parenthesis</gloss>
                   <desc>The inclusion/elimination of opening/closing parentheses.</desc>
                 </valItem>
+                <valItem ident="punct">
+                  <gloss>punctuation</gloss>
+                  <desc>The inclusion/elimination of significant punctuation.</desc>
+                </valItem>
                 <valItem ident="s/z">
                   <gloss>s/z</gloss>
                   <desc>asinus>azinus</desc>
