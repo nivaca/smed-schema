@@ -580,6 +580,10 @@
                   <gloss>i/y</gloss>
                   <desc>ait>ayt</desc>
                 </valItem>
+                <valItem ident="m/n">
+                  <gloss>m/n</gloss>
+                  <desc>cumque>cunque</desc>
+                </valItem>
                 <valItem ident="mn/mpn">
                   <gloss>mn/mpn</gloss>
                   <desc>damnum>dampnum</desc>
