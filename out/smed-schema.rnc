@@ -8,7 +8,7 @@ namespace teix = "http://www.tei-c.org/ns/Examples"
 namespace xi = "http://www.w3.org/2001/XInclude"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2024-07-18T00:44:29Z. . 
+# Schema generated from ODD source 2024-07-18T00:50:40Z. . 
 # TEI Edition: Version 3.1.0. Last updated on 15th December 2016, revision d3f5e70 
 # TEI Edition Location: https://www.tei-c.org/Vault/P5/3.1.0/ 
 #
@@ -315,7 +315,7 @@ att.datable.w3c.attribute.to =
   }?
 sch:pattern [
   id =
-    "lombardpress-schema-att.datable.w3c-att-datable-w3c-when-constraint-rule-1"
+    "smed-schema-att.datable.w3c-att-datable-w3c-when-constraint-rule-1"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -335,7 +335,7 @@ sch:pattern [
 ]
 sch:pattern [
   id =
-    "lombardpress-schema-att.datable.w3c-att-datable-w3c-from-constraint-rule-2"
+    "smed-schema-att.datable.w3c-att-datable-w3c-from-constraint-rule-2"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -355,7 +355,7 @@ sch:pattern [
 ]
 sch:pattern [
   id =
-    "lombardpress-schema-att.datable.w3c-att-datable-w3c-to-constraint-rule-3"
+    "smed-schema-att.datable.w3c-att-datable-w3c-to-constraint-rule-3"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -384,8 +384,7 @@ att.datable.attribute.calendar =
   ## indicates the system or calendar to which the date represented by the content of this element belongs.
   attribute calendar { xsd:anyURI }?
 sch:pattern [
-  id =
-    "lombardpress-schema-att.datable-calendar-calendar-constraint-rule-4"
+  id = "smed-schema-att.datable-calendar-calendar-constraint-rule-4"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -925,7 +924,7 @@ att.typed.attribute.subtype =
     xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
   }?
 sch:pattern [
-  id = "lombardpress-schema-att.typed-subtypeTyped-constraint-rule-5"
+  id = "smed-schema-att.typed-subtypeTyped-constraint-rule-5"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -969,7 +968,7 @@ att.pointing.attribute.targetLang =
   }?
 sch:pattern [
   id =
-    "lombardpress-schema-att.pointing-targetLang-targetLang-constraint-rule-6"
+    "smed-schema-att.pointing-targetLang-targetLang-constraint-rule-6"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -1079,8 +1078,7 @@ att.spanning.attribute.spanTo =
   ## indicates the end of a span initiated by the element bearing this attribute.
   attribute spanTo { xsd:anyURI }?
 sch:pattern [
-  id =
-    "lombardpress-schema-att.spanning-spanTo-spanTo-2-constraint-rule-7"
+  id = "smed-schema-att.spanning-spanTo-spanTo-2-constraint-rule-7"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -1136,7 +1134,7 @@ att.styleDef.attribute.schemeVersion =
   }?
 sch:pattern [
   id =
-    "lombardpress-schema-att.styleDef-schemeVersion-schemeVersionRequiresScheme-constraint-rule-8"
+    "smed-schema-att.styleDef-schemeVersion-schemeVersionRequiresScheme-constraint-rule-8"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -2060,8 +2058,7 @@ p =
   element p {
     macro.paraContent
     >> sch:pattern [
-         id =
-           "lombardpress-schema-p-abstractModel-p-constraint-report-4"
+         id = "smed-schema-p-abstractModel-p-constraint-report-4"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2083,7 +2080,7 @@ p =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-p-abstractModel-structure-l-constraint-report-5"
+           "smed-schema-p-abstractModel-structure-l-constraint-report-5"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2650,7 +2647,7 @@ ptr =
   element ptr {
     empty
     >> sch:pattern [
-         id = "lombardpress-schema-ptr-ptrAtts-constraint-report-6"
+         id = "smed-schema-ptr-ptrAtts-constraint-report-6"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2684,7 +2681,7 @@ ref =
   element ref {
     macro.paraContent
     >> sch:pattern [
-         id = "lombardpress-schema-ref-refAtts-constraint-report-7"
+         id = "smed-schema-ref-refAtts-constraint-report-7"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -2725,7 +2722,7 @@ ref =
      (model.divBottom, model.global*)*)
     >> sch:pattern [
          id =
-           "lombardpress-schema-list-gloss-list-must-have-labels-constraint-rule-9"
+           "smed-schema-list-gloss-list-must-have-labels-constraint-rule-9"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3189,7 +3186,7 @@ relatedItem =
     ((model.biblLike | model.ptrLike)?)
     >> sch:pattern [
          id =
-           "lombardpress-schema-relatedItem-targetorcontent1-constraint-report-8"
+           "smed-schema-relatedItem-targetorcontent1-constraint-report-8"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3231,7 +3228,7 @@ l =
     ((text | model.gLike | model.phrase | model.inter | model.global)*)
     >> sch:pattern [
          id =
-           "lombardpress-schema-l-abstractModel-structure-l-constraint-report-9"
+           "smed-schema-l-abstractModel-structure-l-constraint-report-9"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3268,8 +3265,7 @@ lg =
       | lg)*,
      (model.divBottom, model.global*)*)
     >> sch:pattern [
-         id =
-           "lombardpress-schema-lg-atleast1oflggapl-constraint-assert-8"
+         id = "smed-schema-lg-atleast1oflggapl-constraint-assert-8"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3290,7 +3286,7 @@ lg =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-lg-abstractModel-structure-l-constraint-report-10"
+           "smed-schema-lg-abstractModel-structure-l-constraint-report-10"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -3781,7 +3777,7 @@ quotation =
     (model.pLike*)
     >> sch:pattern [
          id =
-           "lombardpress-schema-quotation-quotationContents-constraint-report-11"
+           "smed-schema-quotation-quotationContents-constraint-report-11"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -4498,7 +4494,7 @@ floatingText =
       (model.divBottom, model.global*)*)?)
     >> sch:pattern [
          id =
-           "lombardpress-schema-div-abstractModel-structure-l-constraint-report-12"
+           "smed-schema-div-abstractModel-structure-l-constraint-report-12"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -4519,7 +4515,7 @@ floatingText =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-div-abstractModel-structure-p-constraint-report-13"
+           "smed-schema-div-abstractModel-structure-p-constraint-report-13"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -4951,8 +4947,7 @@ link =
   element link {
     empty
     >> sch:pattern [
-         id =
-           "lombardpress-schema-link-linkTargets3-constraint-assert-9"
+         id = "smed-schema-link-linkTargets3-constraint-assert-9"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -4993,7 +4988,7 @@ ab =
     macro.paraContent
     >> sch:pattern [
          id =
-           "lombardpress-schema-ab-abstractModel-structure-p-constraint-report-14"
+           "smed-schema-ab-abstractModel-structure-p-constraint-report-14"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -5015,7 +5010,7 @@ ab =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-ab-abstractModel-structure-l-constraint-report-15"
+           "smed-schema-ab-abstractModel-structure-l-constraint-report-15"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -5185,8 +5180,7 @@ join =
   element join {
     ((model.descLike | model.certLike)*)
     >> sch:pattern [
-         id =
-           "lombardpress-schema-join-joinTargets3-constraint-assert-10"
+         id = "smed-schema-join-joinTargets3-constraint-assert-10"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6059,8 +6053,7 @@ relation =
   element relation {
     (desc?)
     >> sch:pattern [
-         id =
-           "lombardpress-schema-relation-reforkeyorname-constraint-assert-11"
+         id = "smed-schema-relation-reforkeyorname-constraint-assert-11"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6078,8 +6071,7 @@ relation =
          "         "
        ]
     >> sch:pattern [
-         id =
-           "lombardpress-schema-relation-activemutual-constraint-report-16"
+         id = "smed-schema-relation-activemutual-constraint-report-16"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6098,8 +6090,7 @@ relation =
          "         "
        ]
     >> sch:pattern [
-         id =
-           "lombardpress-schema-relation-activepassive-constraint-report-17"
+         id = "smed-schema-relation-activepassive-constraint-report-17"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6560,7 +6551,7 @@ rdg =
      }?)
     >> sch:pattern [
          id =
-           "lombardpress-schema-rdg-type-app-must-have-lemma-constraint-rule-10"
+           "smed-schema-rdg-type-app-must-have-lemma-constraint-rule-10"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6576,7 +6567,7 @@ rdg =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-rdg-type-app-must-have-rdg-constraint-rule-11"
+           "smed-schema-rdg-type-app-must-have-rdg-constraint-rule-11"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6592,7 +6583,7 @@ rdg =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-rdg-type-rdg-must-have-wit-or-source-constraint-rule-12"
+           "smed-schema-rdg-type-rdg-must-have-wit-or-source-constraint-rule-12"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6611,7 +6602,7 @@ rdg =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-rdg-type-rdg-must-not-have-app-as-descendant-constraint-rule-13"
+           "smed-schema-rdg-type-rdg-must-not-have-app-as-descendant-constraint-rule-13"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6630,7 +6621,7 @@ rdg =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-rdg-type-empty-lemma-n-attribute-constraint-rule-14"
+           "smed-schema-rdg-type-empty-lemma-n-attribute-constraint-rule-14"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6649,7 +6640,7 @@ rdg =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-rdg-type-variation-absent-rule-constraint-rule-15"
+           "smed-schema-rdg-type-variation-absent-rule-constraint-rule-15"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6681,7 +6672,7 @@ rdg =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-rdg-type-variation-present-rule-constraint-rule-17"
+           "smed-schema-rdg-type-variation-present-rule-constraint-rule-17"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6713,7 +6704,7 @@ rdg =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-rdg-type-variation-choice-rule-constraint-rule-19"
+           "smed-schema-rdg-type-variation-choice-rule-constraint-rule-19"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6732,7 +6723,7 @@ rdg =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-rdg-type-correction-addition-rule-constraint-rule-20"
+           "smed-schema-rdg-type-correction-addition-rule-constraint-rule-20"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6751,7 +6742,7 @@ rdg =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-rdg-type-correction-deletion-rule-constraint-rule-21"
+           "smed-schema-rdg-type-correction-deletion-rule-constraint-rule-21"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6770,7 +6761,7 @@ rdg =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-rdg-type-correction-substitution-rule-constraint-rule-22"
+           "smed-schema-rdg-type-correction-substitution-rule-constraint-rule-22"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6789,7 +6780,7 @@ rdg =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-rdg-type-conjecture-supplied-rule-constraint-rule-23"
+           "smed-schema-rdg-type-conjecture-supplied-rule-constraint-rule-23"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6809,7 +6800,7 @@ rdg =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-rdg-type-conjecture-removed-rule-constraint-rule-24"
+           "smed-schema-rdg-type-conjecture-removed-rule-constraint-rule-24"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6829,7 +6820,7 @@ rdg =
        ]
     >> sch:pattern [
          id =
-           "lombardpress-schema-rdg-type-conjecture-corrected-rule-constraint-rule-25"
+           "smed-schema-rdg-type-conjecture-corrected-rule-constraint-rule-25"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6857,7 +6848,7 @@ rdgGrp =
       | ((lem, wit?)?, (model.rdgLike, wit?))*
       | model.noteLike*)+)
     >> sch:pattern [
-         id = "lombardpress-schema-rdgGrp-only1lem-constraint-assert-12"
+         id = "smed-schema-rdgGrp-only1lem-constraint-assert-12"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -6980,7 +6971,7 @@ variantEncoding =
     }
     >> sch:pattern [
          id =
-           "lombardpress-schema-variantEncoding-location-variantEncodingLocation-constraint-rule-26"
+           "smed-schema-variantEncoding-location-variantEncodingLocation-constraint-rule-26"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -7168,7 +7159,7 @@ addSpan =
   element addSpan {
     empty
     >> sch:pattern [
-         id = "lombardpress-schema-addSpan-spanTo-constraint-assert-14"
+         id = "smed-schema-addSpan-spanTo-constraint-assert-14"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -7188,8 +7179,7 @@ addSpan =
          "         "
        ]
     >> sch:pattern [
-         id =
-           "lombardpress-schema-addSpan-spanTo_fr-constraint-assert-15"
+         id = "smed-schema-addSpan-spanTo_fr-constraint-assert-15"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -7229,8 +7219,7 @@ damageSpan =
   element damageSpan {
     empty
     >> sch:pattern [
-         id =
-           "lombardpress-schema-damageSpan-spanTo-constraint-assert-16"
+         id = "smed-schema-damageSpan-spanTo-constraint-assert-16"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -7251,8 +7240,7 @@ damageSpan =
          "         "
        ]
     >> sch:pattern [
-         id =
-           "lombardpress-schema-damageSpan-spanTo_fr-constraint-assert-17"
+         id = "smed-schema-damageSpan-spanTo_fr-constraint-assert-17"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -7281,7 +7269,7 @@ delSpan =
   element delSpan {
     empty
     >> sch:pattern [
-         id = "lombardpress-schema-delSpan-spanTo-constraint-assert-18"
+         id = "smed-schema-delSpan-spanTo-constraint-assert-18"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -7301,8 +7289,7 @@ delSpan =
          "         "
        ]
     >> sch:pattern [
-         id =
-           "lombardpress-schema-delSpan-spanTo_fr-constraint-assert-19"
+         id = "smed-schema-delSpan-spanTo_fr-constraint-assert-19"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -7444,8 +7431,7 @@ subst =
   element subst {
     ((add | del | model.milestoneLike)+)
     >> sch:pattern [
-         id =
-           "lombardpress-schema-subst-substContents1-constraint-assert-20"
+         id = "smed-schema-subst-substContents1-constraint-assert-20"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -7656,7 +7642,7 @@ catchwords =
     macro.phraseSeq
     >> sch:pattern [
          id =
-           "lombardpress-schema-catchwords-catchword_in_msDesc-constraint-assert-21"
+           "smed-schema-catchwords-catchword_in_msDesc-constraint-assert-21"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -7685,8 +7671,7 @@ dimensions =
   element dimensions {
     ((dim | model.dimLike)*)
     >> sch:pattern [
-         id =
-           "lombardpress-schema-dimensions-duplicateDim-constraint-report-34"
+         id = "smed-schema-dimensions-duplicateDim-constraint-report-34"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -7859,8 +7844,7 @@ secFol =
   element secFol {
     macro.phraseSeq
     >> sch:pattern [
-         id =
-           "lombardpress-schema-secFol-secFol_in_msDesc-constraint-assert-22"
+         id = "smed-schema-secFol-secFol_in_msDesc-constraint-assert-22"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -7890,7 +7874,7 @@ signatures =
     macro.specialPara
     >> sch:pattern [
          id =
-           "lombardpress-schema-signatures-signatures_in_msDesc-constraint-assert-23"
+           "smed-schema-signatures-signatures_in_msDesc-constraint-assert-23"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -7945,7 +7929,7 @@ msIdentifier =
      (msName | altIdentifier)*)
     >> sch:pattern [
          id =
-           "lombardpress-schema-msIdentifier-msId_minimal-constraint-report-37"
+           "smed-schema-msIdentifier-msId_minimal-constraint-report-37"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -8583,7 +8567,7 @@ s =
   element s {
     macro.phraseSeq
     >> sch:pattern [
-         id = "lombardpress-schema-s-noNestedS-constraint-report-38"
+         id = "smed-schema-s-noNestedS-constraint-report-38"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -8714,7 +8698,7 @@ span =
   element span {
     macro.phraseSeq.limited
     >> sch:pattern [
-         id = "lombardpress-schema-span-targetfrom-constraint-report-39"
+         id = "smed-schema-span-targetfrom-constraint-report-39"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -8736,7 +8720,7 @@ span =
          "         "
        ]
     >> sch:pattern [
-         id = "lombardpress-schema-span-targetto-constraint-report-40"
+         id = "smed-schema-span-targetto-constraint-report-40"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -8758,7 +8742,7 @@ span =
          "         "
        ]
     >> sch:pattern [
-         id = "lombardpress-schema-span-tonotfrom-constraint-report-41"
+         id = "smed-schema-span-tonotfrom-constraint-report-41"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -8779,7 +8763,7 @@ span =
          "         "
        ]
     >> sch:pattern [
-         id = "lombardpress-schema-span-tofrom-constraint-report-42"
+         id = "smed-schema-span-tofrom-constraint-report-42"
          "\x{a}" ~
          "            "
          sch:rule [
@@ -8842,8 +8826,7 @@ interpGrp =
   }
 start = TEI
 sch:pattern [
-  id =
-    "lombardpress-schema-cit-must-have-quote-or-ref-constraint-rule-27"
+  id = "smed-schema-cit-must-have-quote-or-ref-constraint-rule-27"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -8861,8 +8844,7 @@ sch:pattern [
   "   "
 ]
 sch:pattern [
-  id =
-    "lombardpress-schema-milestones-must-have-ed-attr-constraint-rule-28"
+  id = "smed-schema-milestones-must-have-ed-attr-constraint-rule-28"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -8881,8 +8863,7 @@ sch:pattern [
   "   "
 ]
 sch:pattern [
-  id =
-    "lombardpress-schema-cb-and-pb-must-have-n-attr-constraint-rule-29"
+  id = "smed-schema-cb-and-pb-must-have-n-attr-constraint-rule-29"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -8897,7 +8878,7 @@ sch:pattern [
   "   "
 ]
 sch:pattern [
-  id = "lombardpress-schema-missing-author-rule-constraint-rule-30"
+  id = "smed-schema-missing-author-rule-constraint-rule-30"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -8916,7 +8897,7 @@ sch:pattern [
   "   "
 ]
 sch:pattern [
-  id = "lombardpress-schema-missing-edition-n-constraint-rule-31"
+  id = "smed-schema-missing-edition-n-constraint-rule-31"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -8935,7 +8916,7 @@ sch:pattern [
   "   "
 ]
 sch:pattern [
-  id = "lombardpress-schema-missing-edition-date-constraint-rule-32"
+  id = "smed-schema-missing-edition-date-constraint-rule-32"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -8955,7 +8936,7 @@ sch:pattern [
 ]
 sch:pattern [
   id =
-    "lombardpress-schema-missing-edition-date-when-attribute-constraint-rule-33"
+    "smed-schema-missing-edition-date-when-attribute-constraint-rule-33"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -8974,8 +8955,7 @@ sch:pattern [
   "   "
 ]
 sch:pattern [
-  id =
-    "lombardpress-schema-pubstmt-must-have-authority-constraint-rule-34"
+  id = "smed-schema-pubstmt-must-have-authority-constraint-rule-34"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -8994,8 +8974,7 @@ sch:pattern [
   "   "
 ]
 sch:pattern [
-  id =
-    "lombardpress-schema-pubstmt-must-have-availability-constraint-rule-35"
+  id = "smed-schema-pubstmt-must-have-availability-constraint-rule-35"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -9015,7 +8994,7 @@ sch:pattern [
 ]
 sch:pattern [
   id =
-    "lombardpress-schema-src-desc-must-contain-listwit-or-listbibl-constraint-rule-36"
+    "smed-schema-src-desc-must-contain-listwit-or-listbibl-constraint-rule-36"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -9034,8 +9013,7 @@ sch:pattern [
   "   "
 ]
 sch:pattern [
-  id =
-    "lombardpress-schema-encoding-desc-must-be-present-constraint-rule-37"
+  id = "smed-schema-encoding-desc-must-be-present-constraint-rule-37"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -9053,8 +9031,7 @@ sch:pattern [
   "   "
 ]
 sch:pattern [
-  id =
-    "lombardpress-schema-schema-ref-must-be-present-constraint-rule-38"
+  id = "smed-schema-schema-ref-must-be-present-constraint-rule-38"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -9072,8 +9049,7 @@ sch:pattern [
   "   "
 ]
 sch:pattern [
-  id =
-    "lombardpress-schema-schema-ref-must-have-n-attribute-constraint-rule-39"
+  id = "smed-schema-schema-ref-must-have-n-attribute-constraint-rule-39"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -9094,8 +9070,7 @@ sch:pattern [
   "   "
 ]
 sch:pattern [
-  id =
-    "lombardpress-schema-revision-desc-must-be-present-constraint-rule-40"
+  id = "smed-schema-revision-desc-must-be-present-constraint-rule-40"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -9113,8 +9088,7 @@ sch:pattern [
   "   "
 ]
 sch:pattern [
-  id =
-    "lombardpress-schema-revision-desc-must-have-status-constraint-rule-41"
+  id = "smed-schema-revision-desc-must-have-status-constraint-rule-41"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -9132,8 +9106,7 @@ sch:pattern [
   "   "
 ]
 sch:pattern [
-  id =
-    "lombardpress-schema-front-element-must-be-present-constraint-rule-42"
+  id = "smed-schema-front-element-must-be-present-constraint-rule-42"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -9151,8 +9124,7 @@ sch:pattern [
   "   "
 ]
 sch:pattern [
-  id =
-    "lombardpress-schema-front-element-starts-on-div-constraint-rule-43"
+  id = "smed-schema-front-element-starts-on-div-constraint-rule-43"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -9173,7 +9145,7 @@ sch:pattern [
 ]
 sch:pattern [
   id =
-    "lombardpress-schema-body-must-have-immediate-div-and-no-other-direct-children-constraint-rule-44"
+    "smed-schema-body-must-have-immediate-div-and-no-other-direct-children-constraint-rule-44"
   "\x{a}" ~
   "      "
   sch:rule [
@@ -9204,7 +9176,7 @@ sch:pattern [
   "   "
 ]
 sch:pattern [
-  id = "lombardpress-schema-body-p-is-child-of-div-constraint-rule-46"
+  id = "smed-schema-body-p-is-child-of-div-constraint-rule-46"
   "\x{a}" ~
   "      "
   sch:rule [
