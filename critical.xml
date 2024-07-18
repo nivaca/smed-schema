@@ -33,6 +33,27 @@
         <!-- Core Module -->
         <moduleRef key="core"/>
         
+        <elementSpec ident="q" module="core" mode="change">
+          <attList>
+            <attDef ident="who" usage="opt" mode="change">
+              <valList type="closed" mode="add">
+                <valItem ident="Sal">
+                  <gloss>Sal</gloss>
+                  <desc>Salomon</desc>
+                </valItem>
+                <valItem ident="Marc">
+                  <gloss>Marc</gloss>
+                  <desc>Marcolfus</desc>
+                </valItem>
+                <valItem ident="al">
+                  <gloss>al</gloss>
+                  <desc>alii (otros hablantes)</desc>
+                </valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        
         <!-- Begin modifications to del element -->
         <elementSpec ident="del" module="core" mode="change">
           <attList>
@@ -222,7 +243,7 @@
           <desc>SchemaRef must have an n attribute indicating schema version followed</desc>
           <constraint>
             <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="/tei:TEI/tei:teiHeader[1]/tei:encodingDesc[1]/tei:schemaRef[1]">
-              <report test="not(./@n)">SchemaRef must have an n attribute indicating the schema version followed, e.g. "lbp-critical-1.0.0" </report>
+              <report test="not(./@n)">SchemaRef must have an n attribute indicating the schema version followed, <abbr corresp="eg"/> "lbp-critical-1.0.0" </report>
             </rule>
           </constraint>
         </constraintSpec>
@@ -264,7 +285,7 @@
           <desc>Front element must contain a div with a starts-on xml:id</desc>
           <constraint>
             <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="/tei:TEI/tei:text[1]/tei:front[1]">
-              <report test="not(./tei:div[@xml:id='starts-on'])">Front element must contain a div with a "starts-on" xml:id, i.e. @xml:id='starts-on'</report>
+              <report test="not(./tei:div[@xml:id='starts-on'])">Front element must contain a div with a "starts-on" xml:id, <abbr corresp="ie"/> @xml:id='starts-on'</report>
             </rule>
           </constraint>
         </constraintSpec>

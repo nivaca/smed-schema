@@ -8,7 +8,7 @@ namespace teix = "http://www.tei-c.org/ns/Examples"
 namespace xi = "http://www.w3.org/2001/XInclude"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2024-06-04T14:36:10Z. . 
+# Schema generated from ODD source 2024-07-18T00:41:08Z. . 
 # TEI Edition: Version 3.1.0. Last updated on 15th December 2016, revision d3f5e70 
 # TEI Edition Location: https://www.tei-c.org/Vault/P5/3.1.0/ 
 #
@@ -2197,7 +2197,21 @@ q =
   element q {
     macro.specialPara,
     att.global.attributes,
-    att.ascribed.attributes,
+    
+    ## indicates the person, or group of people, to whom the element content is ascribed.
+    attribute who {
+      list {
+        (
+         ## (Sal) Salomon
+         "Sal"
+         | 
+           ## (Marc) Marcolfus
+           "Marc"
+         | 
+           ## (al) alii (otros hablantes)
+           "al")+
+      }
+    }?,
     
     ## may be used to indicate whether the offset passage is spoken or thought, or to characterize it more finely.
     ## Suggested values include: 1] spoken; 2] thought; 3] written; 4] soCalled; 5] foreign; 6] distinct; 7] term; 8] emph; 9] mentioned
@@ -9069,7 +9083,9 @@ sch:pattern [
     "         "
     sch:report [
       test = "not(./@n)"
-      'SchemaRef must have an n attribute indicating the schema version followed, e.g. "lbp-critical-1.0.0" '
+      "SchemaRef must have an n attribute indicating the schema version followed, "
+      sch:abbr [ corresp = "eg" ]
+      ' "lbp-critical-1.0.0" '
     ]
     "\x{a}" ~
     "      "
@@ -9145,7 +9161,9 @@ sch:pattern [
     "         "
     sch:report [
       test = "not(./tei:div[@xml:id='starts-on'])"
-      """Front element must contain a div with a "starts-on" xml:id, i.e. @xml:id='starts-on'"""
+      'Front element must contain a div with a "starts-on" xml:id, '
+      sch:abbr [ corresp = "ie" ]
+      " @xml:id='starts-on'"
     ]
     "\x{a}" ~
     "      "
