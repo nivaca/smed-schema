@@ -27,7 +27,7 @@
   </teiHeader>
   <text>
     <body>
-      <schemaSpec ident="smed-schema" start="TEI"
+      <schemaSpec ident="smed" start="TEI"
         source="http://www.tei-c.org/Vault/P5/3.1.0/xml/tei/odd/p5subset.xml">
         
         <!-- Core Module -->
