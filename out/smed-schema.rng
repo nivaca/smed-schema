@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-07-18T00:57:25Z. . 
+Schema generated from ODD source 2024-07-18T00:59:05Z. . 
 TEI Edition: Version 3.1.0. Last updated on 15th December 2016, revision d3f5e70 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.1.0/ 
   
@@ -13018,7 +13018,7 @@ The attributes @to and @from on <name/> may each contain only a single value</re
             id="smed-schema-ref-must-have-n-attribute-constraint-rule-39">
       <rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
             context="/tei:TEI/tei:teiHeader[1]/tei:encodingDesc[1]/tei:schemaRef[1]">
-         <report test="not(./@n)">SchemaRef must have an n attribute indicating the schema version followed, <abbr corresp="eg"/> "smed-1.0.0" </report>
+         <report test="not(./@n)">SchemaRef must have an n attribute indicating the schema version followed, e.g. "smed-1.0.0" </report>
       </rule>
    </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"

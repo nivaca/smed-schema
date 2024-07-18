@@ -8,7 +8,7 @@ namespace teix = "http://www.tei-c.org/ns/Examples"
 namespace xi = "http://www.w3.org/2001/XInclude"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2024-07-18T00:57:15Z. . 
+# Schema generated from ODD source 2024-07-18T00:59:14Z. . 
 # TEI Edition: Version 3.1.0. Last updated on 15th December 2016, revision d3f5e70 
 # TEI Edition Location: https://www.tei-c.org/Vault/P5/3.1.0/ 
 #
@@ -9035,9 +9035,7 @@ sch:pattern [
     "         "
     sch:report [
       test = "not(./@n)"
-      "SchemaRef must have an n attribute indicating the schema version followed, "
-      sch:abbr [ corresp = "eg" ]
-      ' "smed-1.0.0" '
+      'SchemaRef must have an n attribute indicating the schema version followed, e.g. "smed-1.0.0" '
     ]
     "\x{a}" ~
     "      "
