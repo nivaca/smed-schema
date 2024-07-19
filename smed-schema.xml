@@ -326,8 +326,33 @@
         
         <!-- optional modules -->
         
+        
+        
         <!-- linking module -->
         <moduleRef key="linking"/>
+        
+        <elementSpec ident="seg" module="core" mode="change">
+          <attList>
+            <attDef ident="ana" usage="opt" mode="change">
+              <valList type="closed" mode="add">
+                <valItem ident="quia-caus">
+                  <gloss>quia-caus</gloss>
+                  <desc>'Quia' como conjunción causal</desc>
+                </valItem>
+                <valItem ident="quia-obj">
+                  <gloss>quia-obj</gloss>
+                  <desc>'Quia' como conjunción de subordinación
+                  (objeto)</desc>
+                </valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        
+        
+        
+        
+        
         
         <!-- Name and Date Module -->
         <moduleRef key="namesdates"/>
