@@ -609,17 +609,21 @@
                   <gloss>c/t</gloss>
                   <desc>altior>alcior</desc>
                 </valItem>
-                <valItem ident="d/t">
-                  <gloss>d/t</gloss>
-                  <desc>inquid>inquit</desc>
-                </valItem>
                 <valItem ident="ch/h">
                   <gloss>ch>h</gloss>
                   <desc>nihil>nichil</desc>
                 </valItem>
+                <valItem ident="d/t">
+                  <gloss>d/t</gloss>
+                  <desc>inquid>inquit</desc>
+                </valItem>
                 <valItem ident="doub">
                   <gloss>doubling</gloss>
                   <desc>catus>cattus</desc>
+                </valItem>
+                <valItem ident="equiv">
+                  <gloss>equiv</gloss>
+                  <desc>rough semantic equivalence, e.g. "hic">"iste"</desc>
                 </valItem>
                 <valItem ident="h">
                   <gloss>h</gloss>
@@ -636,6 +640,10 @@
                 <valItem ident="mn/mpn">
                   <gloss>mn/mpn</gloss>
                   <desc>damnum>dampnum</desc>
+                </valItem>
+                <valItem ident="name">
+                  <gloss>name</gloss>
+                  <desc>proper name variation, e.g. "Gabaon">"Gabata"</desc>
                 </valItem>
                 <valItem ident="oe/e">
                   <gloss>oe/e</gloss>

@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-07-19T21:51:50Z. . 
+Schema generated from ODD source 2024-08-07T23:45:29Z. . 
 TEI Edition: Version 3.1.0. Last updated on 15th December 2016, revision d3f5e70 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.1.0/ 
   
@@ -10110,12 +10110,14 @@ Suggested values include: 1] conjecture-supplied (conjecture-supplied); 2] conje
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(c/qu) persequutione&gt;persecutione</a:documentation>
                         <value>c/t</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(c/t) altior&gt;alcior</a:documentation>
-                        <value>d/t</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(d/t) inquid&gt;inquit</a:documentation>
                         <value>ch/h</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(ch&gt;h) nihil&gt;nichil</a:documentation>
+                        <value>d/t</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(d/t) inquid&gt;inquit</a:documentation>
                         <value>doub</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(doubling) catus&gt;cattus</a:documentation>
+                        <value>equiv</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(equiv) rough semantic equivalence, e.g. "hic"&gt;"iste"</a:documentation>
                         <value>h</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(h) nil&gt;nihil</a:documentation>
                         <value>i/y</value>
@@ -10124,6 +10126,8 @@ Suggested values include: 1] conjecture-supplied (conjecture-supplied); 2] conje
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(m/n) cumque&gt;cunque</a:documentation>
                         <value>mn/mpn</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(mn/mpn) damnum&gt;dampnum</a:documentation>
+                        <value>name</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(name) proper name variation, e.g. "Gabaon"&gt;"Gabata"</a:documentation>
                         <value>oe/e</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(oe/e) coena&gt;cena</a:documentation>
                         <value>par</value>
