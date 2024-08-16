@@ -32,6 +32,43 @@
         <!-- Core Module -->
         <moduleRef key="core"/>
         
+        
+        <elementSpec ident="pb" module="core" mode="change">
+          <attList>
+            <attDef ident="break" usage="opt" mode="change">
+              <valList type="closed" mode="add">
+                <valItem ident="yes">
+                  <gloss>yes</gloss>
+                  <desc>milestone breaks a word in two</desc>
+                </valItem>
+                <valItem ident="no">
+                  <gloss>no</gloss>
+                  <desc>milestone doen not break a word in two</desc>
+                </valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        
+        
+        <elementSpec ident="lb" module="core" mode="change">
+          <attList>
+            <attDef ident="break" usage="opt" mode="change">
+              <valList type="closed" mode="add">
+                <valItem ident="yes">
+                  <gloss>yes</gloss>
+                  <desc>milestone breaks a word in two</desc>
+                </valItem>
+                <valItem ident="no">
+                  <gloss>no</gloss>
+                  <desc>milestone doen not break a word in two</desc>
+                </valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        
+        
         <elementSpec ident="q" module="core" mode="change">
           <attList>
             <attDef ident="who" usage="opt" mode="change">
