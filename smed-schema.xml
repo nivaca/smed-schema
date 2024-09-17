@@ -662,6 +662,10 @@
                   <gloss>equiv</gloss>
                   <desc>rough semantic equivalence, e.g. "hic">"iste"</desc>
                 </valItem>
+                <valItem ident="gen">
+                  <gloss>gender</gloss>
+                  <desc>change in grammatical gender, e.g. "bonus">"bona"</desc>
+                </valItem>
                 <valItem ident="h">
                   <gloss>h</gloss>
                   <desc>nil>nihil</desc>
