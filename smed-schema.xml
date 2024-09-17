@@ -702,6 +702,10 @@
                   <gloss>word separation</gloss>
                   <desc>nonnihil>non nihil</desc>
                 </valItem>
+                <valItem ident="i/u">
+                  <gloss>i/u</gloss>
+                  <desc>similans>simulans</desc>
+                </valItem>
                 <valItem ident="ø">
                   <gloss>Introduction/elimination of letters not analyzable otherwise.</gloss>
                   <desc>nihil>nil</desc>
