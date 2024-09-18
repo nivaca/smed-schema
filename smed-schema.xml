@@ -670,6 +670,10 @@
                   <gloss>h</gloss>
                   <desc>nil>nihil</desc>
                 </valItem>
+                <valItem ident="hap">
+                  <gloss>haplology/epenthesis</gloss>
+                  <desc>A sequence of similar or identical sounds or syllables is simplified by omitting one of them (or added, made more complex). It often occurs to make pronunciation easier or smoother. E.g. disrupta>dirupta. </desc>
+                </valItem>
                 <valItem ident="i/u">
                   <gloss>i/u (vowel alternation or gradation)</gloss>
                   <desc>similans>simulans</desc>
