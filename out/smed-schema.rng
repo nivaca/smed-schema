@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-09-18T20:54:45Z. . 
+Schema generated from ODD source 2024-09-18T21:00:38Z. . 
 TEI Edition: Version 3.1.0. Last updated on 15th December 2016, revision d3f5e70 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.1.0/ 
   
@@ -10205,7 +10205,7 @@ Suggested values include: 1] conjecture-supplied (conjecture-supplied); 2] conje
                         <value>sep</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(word separation) nonnihil&gt;non nihil</a:documentation>
                         <value>vow</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(vowel lowering or raising) rugosa&gt;rogosa</a:documentation>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(vowel lowering or raising (vowel alternation)) rugosa&gt;rogosa</a:documentation>
                         <value>ø</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(Introduction/elimination of letters not analyzable otherwise.) nihil&gt;nil</a:documentation>
                      </choice>
