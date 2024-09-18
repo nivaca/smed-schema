@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-09-18T15:48:51Z. . 
+Schema generated from ODD source 2024-09-18T20:49:04Z. . 
 TEI Edition: Version 3.1.0. Last updated on 15th December 2016, revision d3f5e70 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.1.0/ 
   
@@ -10167,13 +10167,13 @@ Suggested values include: 1] conjecture-supplied (conjecture-supplied); 2] conje
                         <value>con</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(contraction/expansion) audivisti&gt;audisti</a:documentation>
                         <value>c/qu</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(c/qu) persequutione&gt;persecutione</a:documentation>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(c/qu (Dissimilation)) persequutione&gt;persecutione</a:documentation>
                         <value>c/t</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(c/t) altior&gt;alcior</a:documentation>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(c/t (palatization/affrication)) altior&gt;alcior</a:documentation>
                         <value>ch/h</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(ch&gt;h) nihil&gt;nichil</a:documentation>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(ch&gt;h (epenthesis)) nihil&gt;nichil</a:documentation>
                         <value>d/t</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(d/t) inquid&gt;inquit</a:documentation>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(d/t (voicing/devoicing)) inquid&gt;inquit</a:documentation>
                         <value>doub</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(doubling) catus&gt;cattus</a:documentation>
                         <value>equiv</value>
@@ -10183,13 +10183,13 @@ Suggested values include: 1] conjecture-supplied (conjecture-supplied); 2] conje
                         <value>h</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(h) nil&gt;nihil</a:documentation>
                         <value>i/u</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(i/u) similans&gt;simulans</a:documentation>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(i/u (vowel alternation or gradation)) similans&gt;simulans</a:documentation>
                         <value>i/y</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(i/y) ait&gt;ayt</a:documentation>
                         <value>m/n</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(m/n) cumque&gt;cunque</a:documentation>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(m/n (nasal assimilation)) cumque&gt;cunque</a:documentation>
                         <value>mn/mpn</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(mn/mpn) damnum&gt;dampnum</a:documentation>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(mn/mpn (epenthesis)) damnum&gt;dampnum</a:documentation>
                         <value>name</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(name) proper name variation, e.g. "Gabaon"&gt;"Gabata"</a:documentation>
                         <value>oe/e</value>
@@ -10199,7 +10199,7 @@ Suggested values include: 1] conjecture-supplied (conjecture-supplied); 2] conje
                         <value>punct</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(punctuation) The inclusion/elimination of significant punctuation.</a:documentation>
                         <value>s/z</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(s/z) asinus&gt;azinus</a:documentation>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(s/z (lenition/fortition)) asinus&gt;azinus</a:documentation>
                         <value>sep</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(word separation) nonnihil&gt;non nihil</a:documentation>
                         <value>vow</value>

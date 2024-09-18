@@ -639,19 +639,19 @@
                   <desc>audivisti>audisti</desc>
                 </valItem>
                 <valItem ident="c/qu">
-                  <gloss>c/qu</gloss>
+                  <gloss>c/qu (Dissimilation)</gloss>
                   <desc>persequutione>persecutione</desc>
                 </valItem>
                 <valItem ident="c/t">
-                  <gloss>c/t</gloss>
+                  <gloss>c/t (palatization/affrication)</gloss>
                   <desc>altior>alcior</desc>
                 </valItem>
                 <valItem ident="ch/h">
-                  <gloss>ch>h</gloss>
+                  <gloss>ch>h (epenthesis)</gloss>
                   <desc>nihil>nichil</desc>
                 </valItem>
                 <valItem ident="d/t">
-                  <gloss>d/t</gloss>
+                  <gloss>d/t (voicing/devoicing)</gloss>
                   <desc>inquid>inquit</desc>
                 </valItem>
                 <valItem ident="doub">
@@ -671,7 +671,7 @@
                   <desc>nil>nihil</desc>
                 </valItem>
                 <valItem ident="i/u">
-                  <gloss>i/u</gloss>
+                  <gloss>i/u (vowel alternation or gradation)</gloss>
                   <desc>similans>simulans</desc>
                 </valItem>
                 <valItem ident="i/y">
@@ -679,11 +679,11 @@
                   <desc>ait>ayt</desc>
                 </valItem>
                 <valItem ident="m/n">
-                  <gloss>m/n</gloss>
+                  <gloss>m/n (nasal assimilation)</gloss>
                   <desc>cumque>cunque</desc>
                 </valItem>
                 <valItem ident="mn/mpn">
-                  <gloss>mn/mpn</gloss>
+                  <gloss>mn/mpn (epenthesis)</gloss>
                   <desc>damnum>dampnum</desc>
                 </valItem>
                 <valItem ident="name">
@@ -703,7 +703,7 @@
                   <desc>The inclusion/elimination of significant punctuation.</desc>
                 </valItem>
                 <valItem ident="s/z">
-                  <gloss>s/z</gloss>
+                  <gloss>s/z (lenition/fortition)</gloss>
                   <desc>asinus>azinus</desc>
                 </valItem>
                 <valItem ident="sep">
