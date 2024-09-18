@@ -627,7 +627,7 @@
                   <desc>ursae>ursę</desc>
                 </valItem>
                 <valItem ident="b/p">
-                  <gloss>b/p</gloss>
+                  <gloss>b/p (strengthening/weakening)</gloss>
                   <desc>gibbosum>gipposum</desc>
                 </valItem>
                 <valItem ident="cap">
@@ -670,6 +670,10 @@
                   <gloss>h</gloss>
                   <desc>nil>nihil</desc>
                 </valItem>
+                <valItem ident="i/u">
+                  <gloss>i/u</gloss>
+                  <desc>similans>simulans</desc>
+                </valItem>
                 <valItem ident="i/y">
                   <gloss>i/y</gloss>
                   <desc>ait>ayt</desc>
@@ -706,9 +710,9 @@
                   <gloss>word separation</gloss>
                   <desc>nonnihil>non nihil</desc>
                 </valItem>
-                <valItem ident="i/u">
-                  <gloss>i/u</gloss>
-                  <desc>similans>simulans</desc>
+                <valItem ident="vow">
+                  <gloss>vowel lowering or raising</gloss>
+                  <desc>rugosa>rogosa</desc>
                 </valItem>
                 <valItem ident="ø">
                   <gloss>Introduction/elimination of letters not analyzable otherwise.</gloss>
