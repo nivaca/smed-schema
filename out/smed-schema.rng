@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-09-20T18:59:01Z. . 
+Schema generated from ODD source 2024-09-20T19:21:14Z. . 
 TEI Edition: Version 3.1.0. Last updated on 15th December 2016, revision d3f5e70 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.1.0/ 
   
@@ -10192,8 +10192,6 @@ Suggested values include: 1] conjecture-supplied (conjecture-supplied); 2] conje
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(m/n (nasal assimilation)) cumque&gt;cunque</a:documentation>
                         <value>mt</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(metathesis) Two adjacent or nearby sounds (consonants or vowels) in a word switch places with each other, e.g. altercatio&gt;altricatio</a:documentation>
-                        <value>mn/mpn</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(mn/mpn (epenthesis)) damnum&gt;dampnum</a:documentation>
                         <value>name</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(name) proper name variation, e.g. "Gabaon"&gt;"Gabata"</a:documentation>
                         <value>oe/e</value>
@@ -10204,6 +10202,8 @@ Suggested values include: 1] conjecture-supplied (conjecture-supplied); 2] conje
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(punctuation) The inclusion/elimination of significant punctuation.</a:documentation>
                         <value>s/z</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(s/z (lenition/fortition)) asinus&gt;azinus</a:documentation>
+                        <value>syn/epen</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(syncope/epenthesis) An unstressed vowel or syllable within a word is omitted (added), e.g. pepulum&gt;peplum</a:documentation>
                         <value>sep</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(word separation) nonnihil&gt;non nihil</a:documentation>
                         <value>vow</value>
