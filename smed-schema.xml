@@ -626,10 +626,6 @@
                   <gloss>ae/ę</gloss>
                   <desc>ursae⟺ursę</desc>
                 </valItem>
-                <valItem ident="b/p">
-                  <gloss>b/p (strengthening/weakening)</gloss>
-                  <desc>gibbosum⟺gipposum</desc>
-                </valItem>
                 <valItem ident="cap">
                   <gloss>capitalization</gloss>
                   <desc>capitalization</desc>
@@ -639,7 +635,7 @@
                   <desc>audivisti⟺audisti</desc>
                 </valItem>
                 <valItem ident="c/qu">
-                  <gloss>c/qu (Dissimilation)</gloss>
+                  <gloss>c/qu (dissimilation)</gloss>
                   <desc>persequutione⟺persecutione</desc>
                 </valItem>
                 <valItem ident="c/t">
@@ -686,6 +682,11 @@
                 <valItem ident="i/y">
                   <gloss>i/y</gloss>
                   <desc>ait⟺ayt</desc>
+                </valItem>
+                <valItem ident="len/fort">
+                  <gloss>lenition/fortition</gloss>
+                  <desc>The softening (lenition) or strenghtening (fortition) of a consonant,
+                    e.g. gibbosus⟺gipposus, vacca⟺facca.</desc>
                 </valItem>
                 <valItem ident="m/n">
                   <gloss>m/n (nasal assimilation)</gloss>
