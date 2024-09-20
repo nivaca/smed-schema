@@ -672,7 +672,10 @@
                 </valItem>
                 <valItem ident="hap">
                   <gloss>haplology/epenthesis</gloss>
-                  <desc>A sequence of similar or identical sounds or syllables is simplified by omitting one of them (or added, made more complex). It often occurs to make pronunciation easier or smoother. E.g. disrupta>dirupta. </desc>
+                  <desc>A sequence of similar or identical sounds or syllables 
+                    is simplified by omitting one of them (or added, made more complex). 
+                    It often occurs to make pronunciation easier or smoother. 
+                    E.g. disrupta>dirupta. </desc>
                 </valItem>
                 <valItem ident="i/u">
                   <gloss>i/u (vowel alternation or gradation)</gloss>
@@ -682,6 +685,19 @@
                   <gloss>i/y</gloss>
                   <desc>ait>ayt</desc>
                 </valItem>
+                <!--                -->
+                <!--<valItem ident="len">
+                  <gloss>lenition (weakening, softening) of a consonant</gloss>
+                  <desc>The weakening or softening of a consonant, e.g. securus>segurus.</desc>
+                </valItem>
+                <valItem ident="fort">
+                  <gloss>fortition (strengthening) of a consonant</gloss>
+                  <desc>The strengthening of a consonant: 
+                    (1) voiced to voiceless (inquid>inquit; "ad-" + "tango" → "attango"); 
+                    (2) fricative to stop: a fricative consonant (produced by constricting airflow, like /f/ or /s/) changing into a stop consonant (produced by completely blocking airflow, like /p/ or /t/), e.g. "ex-" + "facere" = efficere.
+                    (3) approximant to stop (an approximant consonant (produced with a narrow constriction of the vocal tract, like /w/ or /j/) changing into a stop consonant).</desc>
+                </valItem>-->
+                <!--                -->
                 <valItem ident="m/n">
                   <gloss>m/n (nasal assimilation)</gloss>
                   <desc>cumque>cunque</desc>
