@@ -702,6 +702,12 @@
                   <gloss>m/n (nasal assimilation)</gloss>
                   <desc>cumque>cunque</desc>
                 </valItem>
+                <valItem ident="mt">
+                  <gloss>metathesis</gloss>
+                  <desc>Two adjacent or nearby sounds (consonants or vowels) 
+                    in a word switch places with each other,
+                  e.g. altercatio>altricatio</desc>
+                </valItem>
                 <valItem ident="mn/mpn">
                   <gloss>mn/mpn (epenthesis)</gloss>
                   <desc>damnum>dampnum</desc>
