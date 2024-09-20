@@ -620,11 +620,26 @@
               
             </attDef>
             
-            <attDef ident="ana" mode="change" usage="opt">
+            <attDef ident="ana" mode="change" usage="opt"
+              xml:lang="eng">
               <valList type="closed" mode="add">
                 <valItem ident="ae/ę">
                   <gloss>ae/ę</gloss>
                   <desc>ursae⟺ursę</desc>
+                </valItem>
+                <valItem ident="aff/pal">
+                  <gloss>affrication/palatization</gloss>
+                  <desc>altior⟺alcior</desc>
+                </valItem>
+                <valItem ident="aph">
+                  <gloss>apheresis</gloss>
+                  <desc>The initial sound or sounds of a word are omitted, 
+                    typically for ease of pronunciation or due
+                    to linguistic evolution, e.g. excoriat⟺scoriat.</desc>
+                </valItem>
+                <valItem ident="as/dis">
+                  <gloss>assimilation/dissimilartion</gloss>
+                  <desc>persequutione⟺persecutione</desc>
                 </valItem>
                 <valItem ident="cap">
                   <gloss>capitalization</gloss>
@@ -638,16 +653,8 @@
                   <gloss>c/qu (dissimilation)</gloss>
                   <desc>persequutione⟺persecutione</desc>
                 </valItem>
-                <valItem ident="c/t">
-                  <gloss>c/t (palatization/affrication)</gloss>
-                  <desc>altior⟺alcior</desc>
-                </valItem>
-                <valItem ident="ch/h">
-                  <gloss>ch>h (epenthesis)</gloss>
-                  <desc>nihil⟺nichil</desc>
-                </valItem>
-                <valItem ident="d/t">
-                  <gloss>d/t (voicing/devoicing)</gloss>
+                <valItem ident="dev/voi">
+                  <gloss>devoicing/voicing</gloss>
                   <desc>inquid⟺inquit</desc>
                 </valItem>
                 <valItem ident="doub">
@@ -686,7 +693,7 @@
                 <valItem ident="len/fort">
                   <gloss>lenition/fortition</gloss>
                   <desc>The softening (lenition) or strenghtening (fortition) of a consonant,
-                    e.g. gibbosus⟺gipposus, vacca⟺facca.</desc>
+                    e.g. gibbosus⟺gipposus, vacca⟺facca, nihil⟺nichil</desc>
                 </valItem>
                 <valItem ident="m/n">
                   <gloss>m/n (nasal assimilation)</gloss>

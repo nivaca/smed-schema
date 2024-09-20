@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-09-20T19:37:05Z. . 
+Schema generated from ODD source 2024-09-20T21:10:43Z. . 
 TEI Edition: Version 3.1.0. Last updated on 15th December 2016, revision d3f5e70 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.1.0/ 
   
@@ -10160,18 +10160,20 @@ Suggested values include: 1] conjecture-supplied (conjecture-supplied); 2] conje
                      <choice>
                         <value>ae/ę</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(ae/ę) ursae⟺ursę</a:documentation>
+                        <value>aff/pal</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(affrication/palatization) altior⟺alcior</a:documentation>
+                        <value>aph</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(apheresis) The initial sound or sounds of a word are omitted, typically for ease of pronunciation or due to linguistic evolution, e.g. excoriat⟺scoriat.</a:documentation>
+                        <value>as/dis</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(assimilation/dissimilartion) persequutione⟺persecutione</a:documentation>
                         <value>cap</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(capitalization) capitalization</a:documentation>
                         <value>con</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(contraction/expansion) audivisti⟺audisti</a:documentation>
                         <value>c/qu</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(c/qu (dissimilation)) persequutione⟺persecutione</a:documentation>
-                        <value>c/t</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(c/t (palatization/affrication)) altior⟺alcior</a:documentation>
-                        <value>ch/h</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(ch&gt;h (epenthesis)) nihil⟺nichil</a:documentation>
-                        <value>d/t</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(d/t (voicing/devoicing)) inquid⟺inquit</a:documentation>
+                        <value>dev/voi</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(devoicing/voicing) inquid⟺inquit</a:documentation>
                         <value>doub</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(doubling) catus⟺cattus</a:documentation>
                         <value>equiv</value>
@@ -10187,7 +10189,7 @@ Suggested values include: 1] conjecture-supplied (conjecture-supplied); 2] conje
                         <value>i/y</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(i/y) ait⟺ayt</a:documentation>
                         <value>len/fort</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(lenition/fortition) The softening (lenition) or strenghtening (fortition) of a consonant, e.g. gibbosus⟺gipposus, vacca⟺facca.</a:documentation>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(lenition/fortition) The softening (lenition) or strenghtening (fortition) of a consonant, e.g. gibbosus⟺gipposus, vacca⟺facca, nihil⟺nichil</a:documentation>
                         <value>m/n</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(m/n (nasal assimilation)) cumque⟺cunque</a:documentation>
                         <value>mt</value>
