@@ -637,11 +637,16 @@
                 <valItem ident="as/dis">
                   <gloss>assimilation/dissimilartion</gloss>
                   <desc>e.g. persequutione ⟺ persecutione;
-                    cumque ⟺ cunque</desc>
+                    cumque ⟺ cunque;
+                    logica ⟺ loyca</desc>
                 </valItem>
                 <valItem ident="cap">
                   <gloss>capitalization</gloss>
                   <desc>capitalization</desc>
+                </valItem>
+                <valItem ident="case">
+                  <gloss>grammatical case change</gloss>
+                  <desc>e.g. tacente ⟺ tacenti</desc>
                 </valItem>
                 <valItem ident="con">
                   <gloss>contraction/expansion</gloss>
@@ -724,17 +729,19 @@
                   <gloss>syncope/epenthesis</gloss>
                   <desc>An unstressed vowel or syllable 
                     within a word is omitted (added), 
-                    e.g. pepulum ⟺ peplum</desc>
+                    e.g. pepulum ⟺ peplum;
+                    litigiosus ⟺ litigosus</desc>
                 </valItem>
                 <valItem ident="sep">
                   <gloss>word separation</gloss>
                   <desc>e.g. nonnihil ⟺ non nihil</desc>
                 </valItem>
                 <valItem ident="vow">
-                  <gloss>vowel transformation (lowering or raising; reduction or simplification; merger)</gloss>
-                  <desc>e.g. rugosa ⟺ rogosa
+                  <gloss>vowel transformation: lowering or raising; reduction or simplification; merger; alternation or gradation</gloss>
+                  <desc>e.g. rugosa ⟺ rogosa; 
                     coena ⟺ cena; 
                     animae ⟺ anime;
+                    similans ⟺ simulans
                     </desc>
                 </valItem>
                 <valItem ident="ø">

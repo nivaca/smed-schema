@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-09-25T15:19:10Z. . 
+Schema generated from ODD source 2024-09-25T15:33:38Z. . 
 TEI Edition: Version 3.1.0. Last updated on 15th December 2016, revision d3f5e70 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.1.0/ 
   
@@ -10163,9 +10163,11 @@ Suggested values include: 1] conjecture-supplied (conjecture-supplied); 2] conje
                         <value>aph</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(apheresis) The initial sound or sounds of a word are omitted, typically for ease of pronunciation or due to linguistic evolution, e.g. excoriat ⟺ scoriat.</a:documentation>
                         <value>as/dis</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(assimilation/dissimilartion) e.g. persequutione ⟺ persecutione; cumque ⟺ cunque</a:documentation>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(assimilation/dissimilartion) e.g. persequutione ⟺ persecutione; cumque ⟺ cunque; logica ⟺ loyca</a:documentation>
                         <value>cap</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(capitalization) capitalization</a:documentation>
+                        <value>case</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(grammatical case change) e.g. tacente ⟺ tacenti</a:documentation>
                         <value>con</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(contraction/expansion) audivisti ⟺ audisti</a:documentation>
                         <value>c/qu</value>
@@ -10201,11 +10203,11 @@ Suggested values include: 1] conjecture-supplied (conjecture-supplied); 2] conje
                         <value>s/z</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(s/z (lenition/fortition)) asinus ⟺ azinus</a:documentation>
                         <value>syn/epen</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(syncope/epenthesis) An unstressed vowel or syllable within a word is omitted (added), e.g. pepulum ⟺ peplum</a:documentation>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(syncope/epenthesis) An unstressed vowel or syllable within a word is omitted (added), e.g. pepulum ⟺ peplum; litigiosus ⟺ litigosus</a:documentation>
                         <value>sep</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(word separation) e.g. nonnihil ⟺ non nihil</a:documentation>
                         <value>vow</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(vowel transformation (lowering or raising; reduction or simplification; merger)) e.g. rugosa ⟺ rogosa coena ⟺ cena; animae ⟺ anime; </a:documentation>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(vowel transformation: lowering or raising; reduction or simplification; merger; alternation or gradation) e.g. rugosa ⟺ rogosa; coena ⟺ cena; animae ⟺ anime; similans ⟺ simulans </a:documentation>
                         <value>ø</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(Introduction/elimination of letters not analyzable otherwise.) nihil ⟺ nil</a:documentation>
                      </choice>
