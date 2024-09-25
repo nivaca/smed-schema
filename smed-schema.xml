@@ -664,6 +664,10 @@
                   <desc>rough semantic equivalence, 
                     e.g. hic ⟺ iste</desc>
                 </valItem>
+                <valItem ident="err">
+                  <gloss>obvious error</gloss>
+                  <desc>e.g. tamen ⟺ tanem</desc>
+                </valItem>
                 <valItem ident="gen">
                   <gloss>gender</gloss>
                   <desc>change in grammatical gender
