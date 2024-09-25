@@ -379,7 +379,7 @@
                 <valItem ident="quia-obj">
                   <gloss>quia-obj</gloss>
                   <desc>'Quia' como conjunción de subordinación
-                  (objeto)</desc>
+                    (objeto)</desc>
                 </valItem>
               </valList>
             </attDef>
@@ -632,15 +632,53 @@
                   <desc>The initial sound or sounds of a word are omitted, 
                     typically for ease of pronunciation or due
                     to linguistic evolution, 
-                    e.g. excoriat ⟺ scoriat.</desc>
+                    e.g. 
+                    <list>
+                      <item>excoriat ⟺ scoriat</item>
+                      <item>hierosolomitane ⟺ ierosolomitane</item>
+                    </list>
+                  </desc>
                 </valItem>
                 <valItem ident="as/dis">
                   <gloss>assimilation/dissimilartion</gloss>
-                  <desc>e.g. persequutione ⟺ persecutione;
-                    cumque ⟺ cunque;
-                    logica ⟺ loyca;
-                    bergario ⟺ bergatio;
-                    asinus ⟺ azinus</desc>
+                  <desc>e.g. 
+                    <list>
+                      <item n="1">bergario ⟺ bergatio</item>
+                      <item n="2">cumque ⟺ cunque</item>
+                      <item n="3">logica ⟺ loyca</item>
+                      <item n="4">asinus ⟺ azinus</item>
+                      <item n="5">exequi ⟺ exsequi</item>
+                      <item n="6">auferre ⟺ afferre</item>
+                    </list>
+                  </desc>
+                  <remarks>
+                    <ab n="2">
+                      cumque ⟺ cunque: The "m" changes to "n", 
+                      a velar nasal (/ŋ/)
+                      that is articulated in the same area as 
+                      the following velar consonant "q" (/k/). 
+                      This is an instance of place assimilation, 
+                      where the nasal sound adjusts to match the place 
+                      of articulation of the following velar consonant.
+                    </ab>
+                    <ab n="3">Ease of Pronunciation: By changing "i" to a "y" sound, 
+                      the speaker may find it easier to articulate the sequence of sounds. 
+                      Dissimilation often occurs when two sounds are phonetically too similar, 
+                      and changing one makes the word smoother to pronounce.
+                      Vowel Dissimilation: In this case, the two vowels "o" 
+                      and "i" are close to each other, 
+                      and the transformation of "i" into the semivowel "y" 
+                      introduces greater variation in the vowel sounds, 
+                      helping to distinguish them.
+                    </ab>
+                    <ab n="6">
+                      This assimilation simplifies the pronunciation 
+                      by making the consonants more similar, specifically 
+                      turning the "b" ("ab-ferre") 
+                      into an "f" ("afferre")
+                      for easier articulation.
+                    </ab>
+                  </remarks>
                 </valItem>
                 <valItem ident="cap">
                   <gloss>capitalization</gloss>
@@ -654,13 +692,10 @@
                   <gloss>contraction/expansion</gloss>
                   <desc>audivisti ⟺ audisti</desc>
                 </valItem>
-                <valItem ident="c/qu">
-                  <gloss>c/qu (dissimilation)</gloss>
-                  <desc>persequutione ⟺ persecutione</desc>
-                </valItem>
                 <valItem ident="dev/voi">
                   <gloss>devoicing/voicing</gloss>
-                  <desc>inquid ⟺ inquit</desc>
+                  <desc>e.g. inquid ⟺ inquit;
+                    celes ⟺ zeles</desc>
                 </valItem>
                 <valItem ident="doub">
                   <gloss>doubling</gloss>
@@ -690,7 +725,14 @@
                 <valItem ident="len/fort">
                   <gloss>consonant lenition/fortition</gloss>
                   <desc>The softening (lenition) or strenghtening (fortition) of a consonant,
-                    e.g. gibbosus ⟺ gipposus, vacca ⟺ facca, nihil ⟺ nichil</desc>
+                    e.g. 
+                    <list>
+                      <item>gibbosus ⟺ gipposus</item>
+                      <item>vacca ⟺ facca</item>
+                      <item>nihil ⟺ nichil</item>
+                      <item>mihi ⟺ michi</item>
+                    </list>
+                  </desc>
                 </valItem>
                 <valItem ident="mt">
                   <gloss>metathesis</gloss>
@@ -707,6 +749,20 @@
                   <gloss>parenthesis</gloss>
                   <desc>The inclusion/elimination of opening/closing parentheses.</desc>
                 </valItem>
+                <valItem ident="pg">
+                  <gloss>paragoge</gloss>
+                  <desc>A sound or syllable is added to the end of a word. 
+                    This often happens to modify the structure of the word 
+                    for grammatical or phonetic reasons, 
+                    sometimes to make pronunciation easier or 
+                    to clarify meaning in specific contexts.
+                    E.g.
+                    <list>
+                      <item>nec ⟺ neque</item>
+                      <item>hic ⟺ hicce</item>
+                    </list>
+                  </desc>
+                </valItem>
                 <valItem ident="punct">
                   <gloss>punctuation</gloss>
                   <desc>The inclusion/elimination of significant punctuation.</desc>
@@ -715,8 +771,22 @@
                   <gloss>syncope/epenthesis</gloss>
                   <desc>An unstressed vowel or syllable 
                     within a word is omitted (added), 
-                    e.g. pepulum ⟺ peplum;
-                    litigiosus ⟺ litigosus</desc>
+                    e.g. 
+                    <list>
+                      <item n="1">pepulum ⟺ peplum</item>
+                      <item n="2">litigiosus ⟺ litigosus</item>
+                      <item n="3">persequutione ⟺ persecutione</item>
+                    </list>
+                  </desc>
+                  <remarks>
+                    <ab n="3">
+                      The transformation from "persequutione" to "persecutione" 
+                      is a case of vowel syncope, where the unstressed "u"
+                      in the middle of the word is omitted, resulting in a shorter, 
+                      more streamlined form.
+                      This process helps simplify the pronunciation of the word.
+                    </ab>
+                  </remarks>
                 </valItem>
                 <valItem ident="sep">
                   <gloss>word separation</gloss>
@@ -724,11 +794,18 @@
                 </valItem>
                 <valItem ident="vow">
                   <gloss>vowel transformation: lowering or raising; reduction or simplification; merger; alternation or gradation</gloss>
-                  <desc>e.g. rugosa ⟺ rogosa; 
-                    coena ⟺ cena; 
-                    animae ⟺ anime;
-                    similans ⟺ simulans
-                    </desc>
+                  <desc>e.g. 
+                    <list>
+                      <item n="1">rugosa ⟺ rogosa</item>
+                      <item n="2">coena ⟺ cena</item> 
+                      <item n="3">animae ⟺ anime</item>
+                      <item n="4">similans ⟺ simulans</item>
+                      <item n="5">excitatio ⟺ excitacio (ti⟺ci)</item>
+                    </list>
+                  </desc>
+                  <remarks>
+                    <ab n="5">"tio" (two syllables: /ti-o/) is simplified in "cio" (one syllable: /t͡ʃo/)</ab>
+                  </remarks>
                 </valItem>
                 <valItem ident="ø">
                   <gloss>Introduction/elimination of letters not analyzable otherwise.</gloss>
