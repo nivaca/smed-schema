@@ -623,23 +623,21 @@
             <attDef ident="ana" mode="change" usage="opt"
               xml:lang="eng">
               <valList type="closed" mode="add">
-                <valItem ident="ae/ę">
-                  <gloss>ae/ę</gloss>
-                  <desc>ursae⟺ursę</desc>
-                </valItem>
                 <valItem ident="aff/pal">
                   <gloss>affrication/palatization</gloss>
-                  <desc>altior⟺alcior</desc>
+                  <desc>altior ⟺ alcior</desc>
                 </valItem>
                 <valItem ident="aph">
                   <gloss>apheresis</gloss>
                   <desc>The initial sound or sounds of a word are omitted, 
                     typically for ease of pronunciation or due
-                    to linguistic evolution, e.g. excoriat⟺scoriat.</desc>
+                    to linguistic evolution, 
+                    e.g. excoriat ⟺ scoriat.</desc>
                 </valItem>
                 <valItem ident="as/dis">
                   <gloss>assimilation/dissimilartion</gloss>
-                  <desc>persequutione⟺persecutione</desc>
+                  <desc>e.g. persequutione ⟺ persecutione;
+                    cumque ⟺ cunque</desc>
                 </valItem>
                 <valItem ident="cap">
                   <gloss>capitalization</gloss>
@@ -647,72 +645,64 @@
                 </valItem>
                 <valItem ident="con">
                   <gloss>contraction/expansion</gloss>
-                  <desc>audivisti⟺audisti</desc>
+                  <desc>audivisti ⟺ audisti</desc>
                 </valItem>
                 <valItem ident="c/qu">
                   <gloss>c/qu (dissimilation)</gloss>
-                  <desc>persequutione⟺persecutione</desc>
+                  <desc>persequutione ⟺ persecutione</desc>
                 </valItem>
                 <valItem ident="dev/voi">
                   <gloss>devoicing/voicing</gloss>
-                  <desc>inquid⟺inquit</desc>
+                  <desc>inquid ⟺ inquit</desc>
                 </valItem>
                 <valItem ident="doub">
                   <gloss>doubling</gloss>
-                  <desc>catus⟺cattus</desc>
+                  <desc>catus ⟺ cattus</desc>
                 </valItem>
                 <valItem ident="equiv">
                   <gloss>equiv</gloss>
                   <desc>rough semantic equivalence, 
-                    e.g. hic⟺iste</desc>
+                    e.g. hic ⟺ iste</desc>
                 </valItem>
                 <valItem ident="gen">
                   <gloss>gender</gloss>
                   <desc>change in grammatical gender
-                    e.g. bonus⟺bona</desc>
+                    e.g. bonus ⟺ bona</desc>
                 </valItem>
                 <valItem ident="h">
                   <gloss>h</gloss>
-                  <desc>nil⟺nihil</desc>
+                  <desc>nil ⟺ nihil</desc>
                 </valItem>
                 <valItem ident="hap">
                   <gloss>haplology/epenthesis</gloss>
                   <desc>A sequence of similar or identical sounds or syllables 
                     is simplified by omitting one of them (or added, made more complex). 
                     It often occurs to make pronunciation easier or smoother. 
-                    E.g. disrupta⟺dirupta. </desc>
+                    E.g. disrupta ⟺ dirupta. </desc>
                 </valItem>
                 <valItem ident="i/u">
                   <gloss>i/u (vowel alternation or gradation)</gloss>
-                  <desc>similans⟺simulans</desc>
+                  <desc>similans ⟺ simulans</desc>
                 </valItem>
                 <valItem ident="i/y">
                   <gloss>i/y</gloss>
-                  <desc>ait⟺ayt</desc>
+                  <desc>ait ⟺ ayt</desc>
                 </valItem>
                 <valItem ident="len/fort">
                   <gloss>lenition/fortition</gloss>
                   <desc>The softening (lenition) or strenghtening (fortition) of a consonant,
-                    e.g. gibbosus⟺gipposus, vacca⟺facca, nihil⟺nichil</desc>
-                </valItem>
-                <valItem ident="m/n">
-                  <gloss>m/n (nasal assimilation)</gloss>
-                  <desc>cumque⟺cunque</desc>
+                    e.g. gibbosus ⟺ gipposus, vacca ⟺ facca, nihil ⟺ nichil</desc>
                 </valItem>
                 <valItem ident="mt">
                   <gloss>metathesis</gloss>
                   <desc>Two adjacent or nearby sounds (consonants or vowels) 
                     in a word switch places with each other,
-                    e.g. altercatio⟺altricatio</desc>
+                    e.g. altercatio ⟺ altricatio</desc>
                 </valItem>
                 <valItem ident="name">
                   <gloss>name</gloss>
                   <desc>proper-name variation,
-                    e.g. Gabaon⟺Gabata</desc>
-                </valItem>
-                <valItem ident="oe/e">
-                  <gloss>oe/e</gloss>
-                  <desc>coena⟺cena</desc>
+                    e.g. Gabaon ⟺ Gabata</desc>
                 </valItem>
                 <valItem ident="par">
                   <gloss>parenthesis</gloss>
@@ -724,25 +714,28 @@
                 </valItem>
                 <valItem ident="s/z">
                   <gloss>s/z (lenition/fortition)</gloss>
-                  <desc>asinus⟺azinus</desc>
+                  <desc>asinus ⟺ azinus</desc>
                 </valItem>
                 <valItem ident="syn/epen">
                   <gloss>syncope/epenthesis</gloss>
                   <desc>An unstressed vowel or syllable 
                     within a word is omitted (added), 
-                    e.g. pepulum⟺peplum</desc>
+                    e.g. pepulum ⟺ peplum</desc>
                 </valItem>
                 <valItem ident="sep">
                   <gloss>word separation</gloss>
-                  <desc>nonnihil⟺non nihil</desc>
+                  <desc>e.g. nonnihil ⟺ non nihil</desc>
                 </valItem>
                 <valItem ident="vow">
-                  <gloss>vowel lowering or raising (vowel alternation)</gloss>
-                  <desc>rugosa⟺rogosa</desc>
+                  <gloss>vowel transformation (lowering or raising; reduction or simplification; merger)</gloss>
+                  <desc>e.g. rugosa ⟺ rogosa
+                    coena ⟺ cena; 
+                    animae ⟺ anime;
+                    </desc>
                 </valItem>
                 <valItem ident="ø">
                   <gloss>Introduction/elimination of letters not analyzable otherwise.</gloss>
-                  <desc>nihil⟺nil</desc>
+                  <desc>nihil ⟺ nil</desc>
                 </valItem>
               </valList>
             </attDef>
