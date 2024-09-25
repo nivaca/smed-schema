@@ -638,7 +638,9 @@
                   <gloss>assimilation/dissimilartion</gloss>
                   <desc>e.g. persequutione ⟺ persecutione;
                     cumque ⟺ cunque;
-                    logica ⟺ loyca</desc>
+                    logica ⟺ loyca;
+                    bergario ⟺ bergatio;
+                    asinus ⟺ azinus</desc>
                 </valItem>
                 <valItem ident="cap">
                   <gloss>capitalization</gloss>
@@ -678,10 +680,6 @@
                   <desc>change in grammatical gender
                     e.g. bonus ⟺ bona</desc>
                 </valItem>
-                <valItem ident="h">
-                  <gloss>h</gloss>
-                  <desc>nil ⟺ nihil</desc>
-                </valItem>
                 <valItem ident="hap">
                   <gloss>haplology/epenthesis</gloss>
                   <desc>A sequence of similar or identical sounds or syllables 
@@ -689,16 +687,8 @@
                     It often occurs to make pronunciation easier or smoother. 
                     E.g. disrupta ⟺ dirupta. </desc>
                 </valItem>
-                <valItem ident="i/u">
-                  <gloss>i/u (vowel alternation or gradation)</gloss>
-                  <desc>similans ⟺ simulans</desc>
-                </valItem>
-                <valItem ident="i/y">
-                  <gloss>i/y</gloss>
-                  <desc>ait ⟺ ayt</desc>
-                </valItem>
                 <valItem ident="len/fort">
-                  <gloss>lenition/fortition</gloss>
+                  <gloss>consonant lenition/fortition</gloss>
                   <desc>The softening (lenition) or strenghtening (fortition) of a consonant,
                     e.g. gibbosus ⟺ gipposus, vacca ⟺ facca, nihil ⟺ nichil</desc>
                 </valItem>
@@ -720,10 +710,6 @@
                 <valItem ident="punct">
                   <gloss>punctuation</gloss>
                   <desc>The inclusion/elimination of significant punctuation.</desc>
-                </valItem>
-                <valItem ident="s/z">
-                  <gloss>s/z (lenition/fortition)</gloss>
-                  <desc>asinus ⟺ azinus</desc>
                 </valItem>
                 <valItem ident="syn/epen">
                   <gloss>syncope/epenthesis</gloss>
