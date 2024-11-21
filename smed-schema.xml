@@ -514,7 +514,7 @@
                 <desc>Inside an app there must not be repeated witnesses inside lem and rdg</desc>
                 <constraint>
                   <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:app">
-                    <report test="distinct-values(tokenize(string-join(*/@wit, ' '), '\s+'))[. = .[position() != last()]]">Inside an app there must not be repeated witnesses inside lem and rdg</report>
+                    <report test="exists(let $tokens := tokenize(string-join(*/@wit, ' '), '\s+')return $tokens[. = .[position() != last()]])">Inside an app there must not be repeated witnesses inside lem and rdg</report>
                   </rule>
                 </constraint>
               </constraintSpec>
