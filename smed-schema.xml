@@ -94,6 +94,37 @@
           </attList>
         </elementSpec>
         
+        
+        
+        <elementSpec ident="title" module="core" mode="change">
+          <attList>
+            <attDef ident="type" usage="opt" mode="change">
+              <valList type="closed" mode="add">
+                <valItem ident="ms">
+                  <gloss>manuscript</gloss>
+                  <desc>Title of a manuscript</desc>
+                </valItem>
+                <valItem ident="ed">
+                  <gloss>edition</gloss>
+                  <desc>Title of a printed edition</desc>
+                </valItem>
+              </valList>
+            </attDef>
+            <attDef ident="rend" usage="opt" mode="change">
+              <valList type="closed" mode="add">
+                <valItem ident="upshape">
+                  <gloss>upshape</gloss>
+                  <desc>
+                    Title rendered in upshape font, 
+                    not in italics
+                  </desc>
+                </valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        
+        
         <!-- Begin modifications to del element -->
         <elementSpec ident="del" module="core" mode="change">
           <attList>
@@ -479,6 +510,15 @@
                 </constraint>
               </constraintSpec>
               
+              <constraintSpec ident="no-repeted-wits-in-app" scheme="schematron">
+                <desc>Inside an app there must not be repeated witnesses inside lem and rdg</desc>
+                <constraint>
+                  <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:app">
+                    <report test="distinct-values(tokenize(string-join(*/@wit, ' '), '\s+'))[. = .[position() != last()]]">Inside an app there must not be repeated witnesses inside lem and rdg</report>
+                  </rule>
+                </constraint>
+              </constraintSpec>
+              
               <!-- correction rules -->
               <constraintSpec ident="correction-addition-rule" scheme="schematron">
                 <desc>Requires that rdg have a add child element when rdg has type=correction-addition</desc>
@@ -625,7 +665,7 @@
               <valList type="closed" mode="add">
                 <valItem ident="aff/pal">
                   <gloss>affrication/palatization</gloss>
-                  <desc>altior ⟺ alcior</desc>
+                  <desc>altior ⟺ alcior</desc><!--c/t-->
                 </valItem>
                 <valItem ident="aph">
                   <gloss>apheresis</gloss>
