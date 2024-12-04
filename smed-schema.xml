@@ -720,6 +720,10 @@
                     </ab>
                   </remarks>
                 </valItem>
+                <valItem ident="asp">
+                  <gloss>aspiration</gloss>
+                  <desc>talpa ⟺ thalpa</desc>
+                </valItem>
                 <valItem ident="cap">
                   <gloss>capitalization</gloss>
                   <desc>capitalization</desc>
