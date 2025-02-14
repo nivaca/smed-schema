@@ -778,6 +778,11 @@
                     </list>
                   </desc>
                 </valItem>
+                <valItem ident="lig">
+                  <gloss>ligature</gloss>
+                  <desc>ligature equivalence:
+                    palacy ⟺ palacii</desc>
+                </valItem>
                 <valItem ident="mt">
                   <gloss>metathesis</gloss>
                   <desc>Two adjacent or nearby sounds (consonants or vowels) 
