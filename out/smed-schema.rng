@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-02-14T15:25:34Z. . 
+Schema generated from ODD source 2025-04-24T18:19:23Z. . 
 TEI Edition: Version 3.1.0. Last updated on 15th December 2016, revision d3f5e70 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.1.0/ 
   
@@ -13174,6 +13174,16 @@ The attributes @to and @from on <name/> may each contain only a single value</re
       <rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
             context="/tei:TEI/tei:text[1]/tei:body[1]//tei:p">
          <report test="not(./parent::tei:div[1])">every body p must be an immediate child of a div</report>
+      </rule>
+   </pattern>
+   <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+            id="smed-app-no-epsilon-with-A-T-rule-constraint-rule-48">
+      <rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
+            context="tei:app[tei:lem[contains(@wit, '#ε')]]">
+         <report test="tei:rdg[matches(@wit, '.*#[A-T](\s|$)')]">
+                An app element containing a lem with wit="#ε" cannot contain a rdg with wit attribute 
+                having a letter between A and T.
+              </report>
       </rule>
    </pattern>
 </grammar>

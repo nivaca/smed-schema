@@ -948,6 +948,17 @@
           </attList>
         </classSpec>
         
+        <constraintSpec ident="app-no-epsilon-with-A-T-rule" scheme="schematron">
+          <desc>Disallows app elements containing both lem with wit="#ε" and rdg with wit containing any letter between A and T</desc>
+          <constraint>
+            <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:app[tei:lem[contains(@wit, '#ε')]]">
+              <report test="tei:rdg[matches(@wit, '.*#[A-T](\s|$)')]">
+                An app element containing a lem with wit="#ε" cannot contain a rdg with wit attribute 
+                having a letter between A and T.
+              </report>
+            </rule>
+          </constraint>
+        </constraintSpec>
         
       </schemaSpec>
     </body>
