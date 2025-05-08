@@ -739,7 +739,8 @@
                 <valItem ident="dev/voi">
                   <gloss>devoicing/voicing</gloss>
                   <desc>e.g. inquid ⟺ inquit;
-                    celes ⟺ zeles</desc>
+                    celes ⟺ zeles; 
+                    vacca ⟺ facca </desc>
                 </valItem>
                 <valItem ident="doub">
                   <gloss>doubling</gloss>
