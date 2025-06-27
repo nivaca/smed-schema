@@ -450,7 +450,8 @@
                 <desc>app must have rdg</desc>
                 <constraint>
                   <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:app">
-                    <report test="not(./tei:rdg)">app must have rdg</report>
+                    <report test="not(.//tei:rdg)">app must have rdg</report>
+                    <!-- <report test="not(./tei:rdg)">app must have rdg</report>-->
                   </rule>
                 </constraint>
               </constraintSpec>
