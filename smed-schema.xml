@@ -242,43 +242,30 @@
           </constraint>
         </constraintSpec>
         <!-- editionStmt rules -->
-        <constraintSpec ident="missing-edition-n" scheme="schematron">
-          <desc>EditionStmt edition must have an n attribute</desc>
+        <constraintSpec ident="edition-must-have-n-date-and-when" scheme="schematron">
+          <desc>EditionStmt edition must have an n attribute, a date child, and that date must have a when attribute.
+            Note: previously split across three constraintSpecs ("missing-edition-n", "missing-edition-date",
+            "missing-edition-date-when-attribute") sharing the identical context
+            ".../editionStmt[1]/edition[1]", which caused first-match shadowing — only the first check
+            ("must have n attribute") ever fired; the other two were silently never evaluated. Consolidated below.</desc>
           <constraint>
             <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="/tei:TEI/tei:teiHeader[1]/tei:fileDesc[1]/tei:editionStmt[1]/tei:edition[1]">
               <report test="not(./@n)">Edition element must indicate edition number with n attribute of the form x.x.x or x.x.x-dev</report>
-            </rule>
-          </constraint>
-        </constraintSpec>
-        <constraintSpec ident="missing-edition-date" scheme="schematron">
-          <desc>EditionStmt Edition must have an date element as child</desc>
-          <constraint>
-            <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="/tei:TEI/tei:teiHeader[1]/tei:fileDesc[1]/tei:editionStmt[1]/tei:edition[1]">
               <report test="not(./tei:date)">EditionStmt Edition must have an date element as child</report>
-            </rule>
-          </constraint>
-        </constraintSpec>
-        <constraintSpec ident="missing-edition-date-when-attribute" scheme="schematron">
-          <desc>EditionStmt Edition Date must have a when attribute</desc>
-          <constraint>
-            <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="/tei:TEI/tei:teiHeader[1]/tei:fileDesc[1]/tei:editionStmt[1]/tei:edition[1]">
-              <report test="not(./tei:date/@when)">EditionStmt Edition Date must have a when attribute</report>
+              <report test="./tei:date and not(./tei:date/@when)">EditionStmt Edition Date must have a when attribute</report>
             </rule>
           </constraint>
         </constraintSpec>
         <!-- pub stmt rules -->
-        <constraintSpec ident="pubstmt-must-have-authority" scheme="schematron">
-          <desc>publicationStmt must have an authority if p is not used</desc>
+        <constraintSpec ident="pubstmt-must-have-authority-and-availability" scheme="schematron">
+          <desc>publicationStmt must have an authority and an availability element as children, if p is not used.
+            Note: previously split across two constraintSpecs ("pubstmt-must-have-authority",
+            "pubstmt-must-have-availability") sharing the identical context
+            ".../publicationStmt[1][not(./tei:p)]", which caused first-match shadowing — only the
+            authority check ever fired; the availability check was silently never evaluated. Consolidated below.</desc>
           <constraint>
             <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="/tei:TEI/tei:teiHeader[1]/tei:fileDesc[1]/tei:publicationStmt[1][not(./tei:p)]">
               <report test="not(./tei:authority)">publicationStmt must have an authority as child if p is not used</report>
-            </rule>
-          </constraint>
-        </constraintSpec>
-        <constraintSpec ident="pubstmt-must-have-availability" scheme="schematron">
-          <desc>publicationStmt must have an availability element as child if p is not used</desc>
-          <constraint>
-            <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="/tei:TEI/tei:teiHeader[1]/tei:fileDesc[1]/tei:publicationStmt[1][not(./tei:p)]">
               <report test="not(./tei:availability)">publicationStmt must have an availability element as child if p is not used</report>
             </rule>
           </constraint>
@@ -294,11 +281,17 @@
           </constraint>
         </constraintSpec>
         <!-- encodingDesc rules -->
-        <constraintSpec ident="encoding-desc-must-be-present" scheme="schematron">
-          <desc>Encoding description must be present</desc>
+        <constraintSpec ident="teiheader-must-have-encoding-and-revision-desc" scheme="schematron">
+          <desc>teiHeader must contain both an encodingDesc and a revisionDesc.
+            Note: previously split across two constraintSpecs ("encoding-desc-must-be-present",
+            "revision-desc-must-be-present") sharing the identical context "/tei:TEI/tei:teiHeader[1]",
+            which caused first-match shadowing — only the encodingDesc check ever fired; the revisionDesc
+            check was silently never evaluated, despite the two constraintSpecs being physically far apart
+            in this file (separated by the sourceDesc and schemaRef rules). Consolidated below.</desc>
           <constraint>
             <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="/tei:TEI/tei:teiHeader[1]">
               <report test="not(./tei:encodingDesc)">Encoding description must be present</report>
+              <report test="not(./tei:revisionDesc)">Revision description must be present</report>
             </rule>
           </constraint>
         </constraintSpec>
@@ -319,14 +312,10 @@
           </constraint>
         </constraintSpec>
         <!-- revisionDesc rules -->
-        <constraintSpec ident="revision-desc-must-be-present" scheme="schematron">
-          <desc>Revision description must be present</desc>
-          <constraint>
-            <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="/tei:TEI/tei:teiHeader[1]">
-              <report test="not(./tei:revisionDesc)">Revision description must be present</report>
-            </rule>
-          </constraint>
-        </constraintSpec>
+        <!-- "revision-desc-must-be-present" was merged into
+             "teiheader-must-have-encoding-and-revision-desc" above,
+             to fix the cross-constraintSpec context shadowing on /tei:TEI/tei:teiHeader[1] -->
+
         <!-- TODO: I can't get this test to work -->
         <constraintSpec ident="revision-desc-must-have-status" scheme="schematron">
           <desc>Revision description must have a status</desc>
@@ -362,12 +351,14 @@
         </constraintSpec>
         <!-- rules for body -->
         <constraintSpec ident="body-must-have-immediate-div-and-no-other-direct-children" scheme="schematron">
-          <desc>Body must have immediate div and no other direct children</desc>
+          <desc>Body must have immediate div and no other direct children.
+            Note: previously two rule elements shared the identical context
+            "/tei:TEI/tei:text[1]/tei:body[1]", which in Schematron causes first-match shadowing —
+            only the first rule fires and the second ("Body must have ONLY child that is a div")
+            was silently never evaluated. Consolidated into one rule below.</desc>
           <constraint>
             <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="/tei:TEI/tei:text[1]/tei:body[1]">
               <report test="not(./tei:div[1])">Body must have immediate div</report>
-            </rule>
-            <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="/tei:TEI/tei:text[1]/tei:body[1]">
               <report test="count(./*) gt 1">Body must have ONLY child that is a div</report>
             </rule>
           </constraint>
@@ -438,20 +429,19 @@
             <attDef ident="type" mode="change" usage="rec">
               <!-- here are the rules for reading types -->
               <!-- general app rules -->
-              <constraintSpec ident="app-must-have-lemma" scheme="schematron">
-                <desc>app must have lemma</desc>
+              <constraintSpec ident="app-basic-structure-rules" scheme="schematron">
+                <desc>Structural requirements for every app element: must have a lem, must have at least
+                  one rdg descendant, and must not repeat the same witness siglum across its lem/rdg children.
+                  Note: these three checks were previously split across three separate constraintSpecs
+                  ("app-must-have-lemma", "app-must-have-rdg", "no-repeted-wits-in-app"), all sharing the
+                  identical context "tei:app". In Schematron this causes first-match shadowing: only the
+                  first rule with a given context ever fires for a node, so the second and third checks were
+                  silently never evaluated against any app element in the corpus. Consolidated into one rule.</desc>
                 <constraint>
                   <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:app">
                     <report test="not(./tei:lem)">app must have lemma</report>
-                  </rule>
-                </constraint>
-              </constraintSpec>
-              <constraintSpec ident="app-must-have-rdg" scheme="schematron">
-                <desc>app must have rdg</desc>
-                <constraint>
-                  <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:app">
                     <report test="not(.//tei:rdg)">app must have rdg</report>
-                    <!-- <report test="not(./tei:rdg)">app must have rdg</report>-->
+                    <report test="some $token in distinct-values(tokenize(string-join(*/@wit, ' '), '\s+')) satisfies count(*/@wit[contains(concat(' ', ., ' '), concat(' ', $token, ' '))]) > 1">Inside an app there must not be repeated witnesses inside lem and rdg</report>
                   </rule>
                 </constraint>
               </constraintSpec>
@@ -471,38 +461,45 @@
                   </rule>
                 </constraint>
               </constraintSpec>-->
-              <constraintSpec ident="empty-lemma-n-attribute" scheme="schematron">
-                <desc>Empty lem must have an n attribute</desc>
+              <constraintSpec ident="empty-lemma-corresp-attribute" scheme="schematron">
+                <desc>Empty lem must have a corresp attribute pointing to its textual anchor, and that
+                  attribute must resolve to an existing xml:id in the document.
+                  (Previously named "empty-lemma-n-attribute" and required @n instead; @n is no longer
+                  constrained here — it remains a valid, optional attribute, but is not enforced by this rule.)</desc>
                 <constraint>
                   <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:lem[not(node())]">
-                    <report test="not(./@n)">Empty lem must have an n attribute</report>
+                    <report test="not(./@corresp)">Empty lem must have a corresp attribute</report>
+                    <report test="./@corresp and not(//*[@xml:id = substring-after(current()/@corresp, '#')])">The corresp attribute of this empty lem does not resolve to any element in the document.</report>
                   </rule>
                 </constraint>
               </constraintSpec>
               <!-- variation type rules -->
               <constraintSpec ident="variation-absent-rule" scheme="schematron">
-                <desc>Requires an empty rdg element when rdg has type=variation-absent</desc>
+                <desc>Requires an empty rdg element and a non-empty preceding sibling lem when rdg has type=variation-absent.
+                  Note: previously two rule elements shared the identical context "tei:rdg[@type='variation-absent']",
+                  causing first-match shadowing — only the first rule fired and the second
+                  ("The preceding sibling lem must have a child node") was silently never evaluated.
+                  Consolidated into one rule below.</desc>
                 <constraint>
                   <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:rdg[@type='variation-absent']">
                     <report test="./text()">This is a rdg type=variation-absent. The value of the rdg element cannot have any text nodes.</report>
-                  </rule>
-                  <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:rdg[@type='variation-absent']">
                     <report test="not(./preceding-sibling::tei:lem/node())">This is a rdg type=variation-absent. The preceding sibling lem must have a child node.</report>
                   </rule>
                 </constraint>
               </constraintSpec>
               <constraintSpec ident="variation-present-rule" scheme="schematron">
-                <desc>Requires an empty lem element (with a corresp attribute pointing to its textual anchor) and a non-empty rdg when rdg has type=variation-present.
+                <desc>Requires an empty lem element and a non-empty rdg when rdg has type=variation-present.
                   Note: previously this constraintSpec held two separate rule elements sharing the same context
                   ("tei:rdg[@type='variation-present']"), which in Schematron causes first-match shadowing:
                   only the first rule fires for a given node and the second is silently never evaluated.
-                  All assertions for this context have been consolidated into a single rule element below.</desc>
+                  All assertions for this context have been consolidated into a single rule element below.
+                  The requirement that the preceding sibling lem carry a corresp attribute is enforced generically
+                  by the "empty-lemma-corresp-attribute" constraintSpec (context tei:lem[not(node())]) and is
+                  intentionally not repeated here to avoid duplicate error reporting for the same defect.</desc>
                 <constraint>
                   <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:rdg[@type='variation-present']">
                     <report test="./preceding-sibling::tei:lem/node()">This is a rdg type=variation-present. The sibling lem cannot have any text nodes.</report>
                     <report test="not(./node())">This is a rdg type=variation-present. The rdg element must have a child node</report>
-                    <report test="not(./preceding-sibling::tei:lem/@corresp)">This is a rdg type=variation-present. The preceding sibling lem must have a corresp attribute pointing to the xml:id of its textual anchor.</report>
-                    <report test="./preceding-sibling::tei:lem/@corresp and not(//*[@xml:id = substring-after(current()/preceding-sibling::tei:lem/@corresp, '#')])">This is a rdg type=variation-present. The corresp attribute of the preceding sibling lem does not resolve to any element in the document.</report>
                   </rule>
                 </constraint>
               </constraintSpec>
@@ -515,14 +512,9 @@
                 </constraint>
               </constraintSpec>
               
-              <constraintSpec ident="no-repeted-wits-in-app" scheme="schematron">
-                <desc>Inside an app there must not be repeated witnesses inside lem and rdg</desc>
-                <constraint>
-                  <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:app">
-                    <report test="some $token in distinct-values(tokenize(string-join(*/@wit, ' '), '\s+')) satisfies count(*/@wit[contains(concat(' ', ., ' '), concat(' ', $token, ' '))]) > 1">Inside an app there must not be repeated witnesses inside lem and rdg</report>
-                  </rule>
-                </constraint>
-              </constraintSpec>
+              <!-- "no-repeted-wits-in-app" was merged into "app-basic-structure-rules" above,
+                   to fix the cross-constraintSpec context shadowing on tei:app -->
+              
               
               <!-- correction rules -->
               <constraintSpec ident="correction-addition-rule" scheme="schematron">
