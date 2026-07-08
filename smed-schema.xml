@@ -492,13 +492,17 @@
                 </constraint>
               </constraintSpec>
               <constraintSpec ident="variation-present-rule" scheme="schematron">
-                <desc>Requires an empty lem element and rdg that is not empty when rdg has type=variation-present</desc>
+                <desc>Requires an empty lem element (with a corresp attribute pointing to its textual anchor) and a non-empty rdg when rdg has type=variation-present.
+                  Note: previously this constraintSpec held two separate rule elements sharing the same context
+                  ("tei:rdg[@type='variation-present']"), which in Schematron causes first-match shadowing:
+                  only the first rule fires for a given node and the second is silently never evaluated.
+                  All assertions for this context have been consolidated into a single rule element below.</desc>
                 <constraint>
                   <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:rdg[@type='variation-present']">
                     <report test="./preceding-sibling::tei:lem/node()">This is a rdg type=variation-present. The sibling lem cannot have any text nodes.</report>
-                  </rule>
-                  <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:rdg[@type='variation-present']">
                     <report test="not(./node())">This is a rdg type=variation-present. The rdg element must have a child node</report>
+                    <report test="not(./preceding-sibling::tei:lem/@corresp)">This is a rdg type=variation-present. The preceding sibling lem must have a corresp attribute pointing to the xml:id of its textual anchor.</report>
+                    <report test="./preceding-sibling::tei:lem/@corresp and not(//*[@xml:id = substring-after(current()/preceding-sibling::tei:lem/@corresp, '#')])">This is a rdg type=variation-present. The corresp attribute of the preceding sibling lem does not resolve to any element in the document.</report>
                   </rule>
                 </constraint>
               </constraintSpec>
