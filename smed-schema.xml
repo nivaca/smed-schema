@@ -453,24 +453,28 @@
                   </rule>
                 </constraint>
               </constraintSpec>
-              <!--<constraintSpec ident="rdg-must-not-have-app-as-descendant" scheme="schematron">
-                <desc>rdg must not have app as descendant</desc>
-                <constraint>
-                  <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:rdg">
-                    <report test=".//tei:app">rdg must not have app as descendant</report>
-                  </rule>
-                </constraint>
-              </constraintSpec>-->
               <constraintSpec ident="empty-lemma-corresp-attribute" scheme="schematron">
-                <desc>Empty lem must have a corresp attribute pointing to its textual anchor, and that
-                  attribute must resolve to an existing xml:id in the document.
-                  (Previously named "empty-lemma-n-attribute" and required @n instead; @n is no longer
-                  constrained here — it remains a valid, optional attribute, but is not enforced by this rule.)</desc>
+                <desc>Empty lem must have a corresp attribute pointing to its textual anchor
+                  (which must resolve to an existing xml:id in the document), and must be
+                  followed by an rdg sibling with @type="variation-present".
+                  Note: "empty-lemma-rdg-var-pres" previously shared the identical context
+                  "tei:lem[not(node())]" with this constraintSpec as a separate block, which
+                  caused first-match shadowing — its assertion was silently never evaluated.
+                  Consolidated into one rule below.</desc>
                 <constraint>
-                  <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:lem[not(node())]">
-                    <report test="not(./@corresp)">Empty lem must have a corresp attribute</report>
-                    <report test="./@corresp and not(//*[@xml:id = substring-after(current()/@corresp, '#')])">The corresp attribute of this empty lem does not resolve to any element in the document.</report>
-                  </rule>
+                  <rule xmlns="http://purl.oclc.org/dsdl/schematron"
+                    context="tei:lem[not(node())]">
+                    <let name="target" value="substring-after(@corresp, '#')"/>
+                    <report test="not(@corresp)">
+                      Empty lem must have a corresp attribute.
+                    </report>
+                    <report test="@corresp and not(//*[@xml:id = $target])">
+                      The corresp attribute of this empty lem does not resolve to any element in the document.
+                    </report>
+                    <assert test="following-sibling::tei:rdg[1][@type='variation-present']">
+                      An empty lem must be followed by an rdg with @type="variation-present".
+                    </assert>
+                    </rule>
                 </constraint>
               </constraintSpec>
               <!-- variation type rules -->
