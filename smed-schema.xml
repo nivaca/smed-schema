@@ -875,27 +875,60 @@
                      from the enclosing reading) applies always.
                    - Enclosing readings that cite only epsilon (edition text containing an
                      apparatus of the real tradition) are exempt from both checks. -->
-              <!-- Nested-apparatus witness checks (2026-07-17, portable form:
-                   no let, no value-of, single self-contained XPath per assert).
-                   ε carve-outs: the token #ε is ignored on both sides, and an
-                   enclosing lem citing only #ε (edition text containing an
-                   apparatus of the real tradition) is exempt. -->
-              <assert test="not(parent::tei:lem[@wit])
-                  or empty(tokenize(normalize-space(parent::tei:lem/@wit), '\s+')[. != '#ε'])
-                  or (every $w in distinct-values(for $a in (tei:lem|tei:rdg)/@wit
-                        return tokenize(normalize-space($a), '\s+'))[. != '#ε']
-                      satisfies $w = tokenize(normalize-space(parent::tei:lem/@wit), '\s+'))">
-                Nested app: a witness cited by an inner lem/rdg is not present in the
-                @wit of the enclosing lem.
+              <!-- Nested-apparatus witness checks, FAMILY-AWARE (2026-07-19).
+                   Group sigla are expanded to leaf witnesses before comparison, in two
+                   passes (enough for the current depth: ε -> δ κ π -> leaves):
+                   a token resolves to (a) the members of a listWit whose @xml:id it
+                   names, (b) the tokens of @corresp on a witness element (used for the
+                   composite sigla ε and α, whose membership must be declared as e.g.
+                   witness[@xml:id='α']/@corresp='#A #E #G #I'), or (c) itself.
+                   The token #ε remains opaque and exempt on both sides: inside a nested
+                   apparatus it denotes the paradosis/ceteri relative to the enclosing
+                   reading, so full expansion would be semantically wrong there.
+                   When the document carries no listWit (e.g. fragments), every token
+                   resolves to itself and the checks degrade gracefully to leaf-level. -->
+              <let name="nst_parent_raw" value="tokenize(normalize-space(parent::tei:lem/@wit), '\s+')[. != '#ε']"/>
+              <let name="nst_inner_raw" value="distinct-values(for $a in (tei:lem|tei:rdg)/@wit
+                    return tokenize(normalize-space($a), '\s+'))[. != '#ε']"/>
+              <let name="nst_parent_l1" value="distinct-values(for $t in $nst_parent_raw return
+                    if (//tei:listWit[@xml:id = substring-after($t, '#')])
+                    then (for $w in //tei:listWit[@xml:id = substring-after($t, '#')]//tei:witness/@xml:id
+                          return concat('#', $w))
+                    else if (//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)
+                    then tokenize(normalize-space(string(//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)), '\s+')
+                    else $t)[. != '#ε']"/>
+              <let name="nst_parent_exp" value="distinct-values(for $t in $nst_parent_l1 return
+                    if (//tei:listWit[@xml:id = substring-after($t, '#')])
+                    then (for $w in //tei:listWit[@xml:id = substring-after($t, '#')]//tei:witness/@xml:id
+                          return concat('#', $w))
+                    else if (//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)
+                    then tokenize(normalize-space(string(//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)), '\s+')
+                    else $t)[. != '#ε']"/>
+              <let name="nst_inner_l1" value="distinct-values(for $t in $nst_inner_raw return
+                    if (//tei:listWit[@xml:id = substring-after($t, '#')])
+                    then (for $w in //tei:listWit[@xml:id = substring-after($t, '#')]//tei:witness/@xml:id
+                          return concat('#', $w))
+                    else if (//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)
+                    then tokenize(normalize-space(string(//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)), '\s+')
+                    else $t)[. != '#ε']"/>
+              <let name="nst_inner_exp" value="distinct-values(for $t in $nst_inner_l1 return
+                    if (//tei:listWit[@xml:id = substring-after($t, '#')])
+                    then (for $w in //tei:listWit[@xml:id = substring-after($t, '#')]//tei:witness/@xml:id
+                          return concat('#', $w))
+                    else if (//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)
+                    then tokenize(normalize-space(string(//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)), '\s+')
+                    else $t)[. != '#ε']"/>
+              <assert test="not(parent::tei:lem[@wit]) or empty($nst_parent_raw)
+                  or (every $w in $nst_inner_exp satisfies $w = $nst_parent_exp)">
+                Nested app: a witness cited by an inner lem/rdg (after expanding family
+                sigla) is not covered by the @wit of the enclosing lem.
               </assert>
-              <assert test="not(parent::tei:lem[@wit])
-                  or empty(tokenize(normalize-space(parent::tei:lem/@wit), '\s+')[. != '#ε'])
+              <assert test="not(parent::tei:lem[@wit]) or empty($nst_parent_raw)
                   or (tei:lem|tei:rdg)/@wit[contains(concat(' ', normalize-space(.), ' '), ' #ε ')]
-                  or (every $w in tokenize(normalize-space(parent::tei:lem/@wit), '\s+')[. != '#ε']
-                      satisfies $w = distinct-values(for $a in (tei:lem|tei:rdg)/@wit
-                        return tokenize(normalize-space($a), '\s+')))">
-                Nested app: a witness of the enclosing lem takes no position in the
-                inner apparatus (waived when the inner apparatus has an epsilon member).
+                  or (every $w in $nst_parent_exp satisfies $w = $nst_inner_exp)">
+                Nested app: a witness of the enclosing lem (after expanding family sigla)
+                takes no position in the inner apparatus (waived when the inner apparatus
+                has an epsilon member).
               </assert>
             </rule>
           </constraint>
