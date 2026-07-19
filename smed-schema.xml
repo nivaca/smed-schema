@@ -850,14 +850,49 @@
             ("app-must-have-lemma", "app-must-have-rdg", "no-repeted-wits-in-app"), all sharing the
             identical context "tei:app". In Schematron this causes first-match shadowing: only the
             first rule with a given context ever fires for a node, so the second and third checks were
-            silently never evaluated against any app element in the corpus. Consolidated into one rule.</desc>
+            silently never evaluated against any app element in the corpus. Consolidated into one rule.
+            Additionally: witness-closure check for NESTED apparatus (2026-07-17). When an app is
+            nested inside a lem or rdg that carries @wit, the union of the witness tokens cited by
+            the inner app's lem/rdg members must be EXACTLY the witness set of the enclosing
+            reading — every witness of the enclosing lem/rdg must take a position in the inner
+            apparatus, and the inner apparatus must not cite witnesses foreign to it. Merged into
+            this rule (rather than a separate constraintSpec with the subset context
+            tei:app[parent::tei:lem]) per the house principle against subset-context shadowing.</desc>
           <constraint>
             <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:app">
+              <let name="encl_wit" value="if (parent::tei:lem/@wit or parent::tei:rdg/@wit)
+                  then distinct-values(tokenize(normalize-space(parent::*/@wit), '\s+'))
+                  else ()"/>
+              <let name="inner_wit" value="distinct-values(for $a in (tei:lem|tei:rdg)/@wit
+                  return tokenize(normalize-space($a), '\s+'))"/>
+              <let name="encl_real" value="$encl_wit[. != '#ε']"/>
+              <let name="inner_real" value="$inner_wit[. != '#ε']"/>
+              <let name="inner_has_eps" value="$inner_wit = '#ε'"/>
               <report test="not(./tei:lem)">app must have lemma</report>
               <report test="not(.//tei:rdg)">app must have rdg</report>
               <!-- lem is checked as a direct child but rdg as a descendant: deliberate,
                    since rdg may be nested inside rdgGrp (the corpus contains rdgGrp). -->
               <report test="some $token in distinct-values(tokenize(string-join(*/@wit, ' '), '\s+')) satisfies count(*/@wit[contains(concat(' ', ., ' '), concat(' ', $token, ' '))]) > 1">Inside an app there must not be repeated witnesses inside lem and rdg</report>
+              <!-- Witness closure for nested apparatus, epsilon-aware (2026-07-17):
+                   - COVERAGE (every witness of the enclosing reading must take a position
+                     in the inner apparatus) applies only when the inner apparatus has NO
+                     epsilon member: an epsilon-anchored inner app (variation-present
+                     convention) implicitly assigns all remaining witnesses to the
+                     edition's side, so coverage is waived there.
+                   - FOREIGNNESS (the inner apparatus must not cite real witnesses absent
+                     from the enclosing reading) applies always.
+                   - Enclosing readings that cite only epsilon (edition text containing an
+                     apparatus of the real tradition) are exempt from both checks. -->
+              <assert test="empty($encl_wit) or empty($encl_real) or $inner_has_eps
+                            or (every $w in $encl_real satisfies $w = $inner_real)">
+                Nested app: witness(es) of the enclosing lem/rdg take no position in the
+                inner apparatus: <value-of select="string-join($encl_real[not(. = $inner_real)], ' ')"/>
+              </assert>
+              <assert test="empty($encl_wit) or empty($encl_real)
+                            or (every $w in $inner_real satisfies $w = $encl_real)">
+                Nested app: the inner apparatus cites witness(es) absent from the enclosing
+                lem/rdg: <value-of select="string-join($inner_real[not(. = $encl_real)], ' ')"/>
+              </assert>
             </rule>
           </constraint>
         </constraintSpec>
