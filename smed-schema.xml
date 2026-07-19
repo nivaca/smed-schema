@@ -860,14 +860,6 @@
             tei:app[parent::tei:lem]) per the house principle against subset-context shadowing.</desc>
           <constraint>
             <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:app">
-              <let name="encl_wit" value="if (parent::tei:lem/@wit or parent::tei:rdg/@wit)
-                  then distinct-values(tokenize(normalize-space(parent::*/@wit), '\s+'))
-                  else ()"/>
-              <let name="inner_wit" value="distinct-values(for $a in (tei:lem|tei:rdg)/@wit
-                  return tokenize(normalize-space($a), '\s+'))"/>
-              <let name="encl_real" value="$encl_wit[. != '#ε']"/>
-              <let name="inner_real" value="$inner_wit[. != '#ε']"/>
-              <let name="inner_has_eps" value="$inner_wit = '#ε'"/>
               <report test="not(./tei:lem)">app must have lemma</report>
               <report test="not(.//tei:rdg)">app must have rdg</report>
               <!-- lem is checked as a direct child but rdg as a descendant: deliberate,
@@ -883,15 +875,27 @@
                      from the enclosing reading) applies always.
                    - Enclosing readings that cite only epsilon (edition text containing an
                      apparatus of the real tradition) are exempt from both checks. -->
-              <assert test="empty($encl_wit) or empty($encl_real) or $inner_has_eps
-                            or (every $w in $encl_real satisfies $w = $inner_real)">
-                Nested app: witness(es) of the enclosing lem/rdg take no position in the
-                inner apparatus: <value-of select="string-join($encl_real[not(. = $inner_real)], ' ')"/>
+              <!-- Nested-apparatus witness checks (2026-07-17, portable form:
+                   no let, no value-of, single self-contained XPath per assert).
+                   ε carve-outs: the token #ε is ignored on both sides, and an
+                   enclosing lem citing only #ε (edition text containing an
+                   apparatus of the real tradition) is exempt. -->
+              <assert test="not(parent::tei:lem[@wit])
+                  or empty(tokenize(normalize-space(parent::tei:lem/@wit), '\s+')[. != '#ε'])
+                  or (every $w in distinct-values(for $a in (tei:lem|tei:rdg)/@wit
+                        return tokenize(normalize-space($a), '\s+'))[. != '#ε']
+                      satisfies $w = tokenize(normalize-space(parent::tei:lem/@wit), '\s+'))">
+                Nested app: a witness cited by an inner lem/rdg is not present in the
+                @wit of the enclosing lem.
               </assert>
-              <assert test="empty($encl_wit) or empty($encl_real)
-                            or (every $w in $inner_real satisfies $w = $encl_real)">
-                Nested app: the inner apparatus cites witness(es) absent from the enclosing
-                lem/rdg: <value-of select="string-join($inner_real[not(. = $encl_real)], ' ')"/>
+              <assert test="not(parent::tei:lem[@wit])
+                  or empty(tokenize(normalize-space(parent::tei:lem/@wit), '\s+')[. != '#ε'])
+                  or (tei:lem|tei:rdg)/@wit[contains(concat(' ', normalize-space(.), ' '), ' #ε ')]
+                  or (every $w in tokenize(normalize-space(parent::tei:lem/@wit), '\s+')[. != '#ε']
+                      satisfies $w = distinct-values(for $a in (tei:lem|tei:rdg)/@wit
+                        return tokenize(normalize-space($a), '\s+')))">
+                Nested app: a witness of the enclosing lem takes no position in the
+                inner apparatus (waived when the inner apparatus has an epsilon member).
               </assert>
             </rule>
           </constraint>
