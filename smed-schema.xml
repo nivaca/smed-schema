@@ -920,15 +920,16 @@
                     else $t)[. != '#ε']"/>
               <assert test="not(parent::tei:lem[@wit]) or empty($nst_parent_raw)
                   or (every $w in $nst_inner_exp satisfies $w = $nst_parent_exp)">
-                Nested app: a witness cited by an inner lem/rdg (after expanding family
-                sigla) is not covered by the @wit of the enclosing lem.
+                Nested app: witness(es) cited by an inner lem/rdg (after expanding family
+                sigla) not covered by the @wit of the enclosing lem:
+                <value-of select="string-join($nst_inner_exp[not(. = $nst_parent_exp)], ' ')"/>
               </assert>
               <assert test="not(parent::tei:lem[@wit]) or empty($nst_parent_raw)
                   or (tei:lem|tei:rdg)/@wit[contains(concat(' ', normalize-space(.), ' '), ' #ε ')]
                   or (every $w in $nst_parent_exp satisfies $w = $nst_inner_exp)">
-                Nested app: a witness of the enclosing lem (after expanding family sigla)
-                takes no position in the inner apparatus (waived when the inner apparatus
-                has an epsilon member).
+                Nested app: witness(es) of the enclosing lem (after expanding family sigla)
+                taking no position in the inner apparatus:
+                <value-of select="string-join($nst_parent_exp[not(. = $nst_inner_exp)], ' ')"/>
               </assert>
             </rule>
           </constraint>

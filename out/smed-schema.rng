@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-07-19T23:20:48Z. . 
+Schema generated from ODD source 2026-07-19T23:44:00Z. . 
 TEI Edition: Version 3.1.0. Last updated on 15th December 2016, revision d3f5e70 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.1.0/ 
   
@@ -13385,13 +13385,26 @@ The attributes @to and @from on <name/> may each contain only a single value</re
          <report test="not(./tei:lem)">app must have lemma</report>
          <report test="not(.//tei:rdg)">app must have rdg</report>
          <report test="some $token in distinct-values(tokenize(string-join(*/@wit, ' '), '\s+')) satisfies count(*/@wit[contains(concat(' ', ., ' '), concat(' ', $token, ' '))]) &gt; 1">Inside an app there must not be repeated witnesses inside lem and rdg</report>
-         <assert test="not(parent::tei:lem[@wit])                   or empty(tokenize(normalize-space(parent::tei:lem/@wit), '\s+')[. != '#ε'])                   or (every $w in distinct-values(for $a in (tei:lem|tei:rdg)/@wit                         return tokenize(normalize-space($a), '\s+'))[. != '#ε']                       satisfies $w = tokenize(normalize-space(parent::tei:lem/@wit), '\s+'))">
-                Nested app: a witness cited by an inner lem/rdg is not present in the
-                @wit of the enclosing lem.
+         <let name="nst_parent_raw"
+              value="tokenize(normalize-space(parent::tei:lem/@wit), '\s+')[. != '#ε']"/>
+         <let name="nst_inner_raw"
+              value="distinct-values(for $a in (tei:lem|tei:rdg)/@wit                     return tokenize(normalize-space($a), '\s+'))[. != '#ε']"/>
+         <let name="nst_parent_l1"
+              value="distinct-values(for $t in $nst_parent_raw return                     if (//tei:listWit[@xml:id = substring-after($t, '#')])                     then (for $w in //tei:listWit[@xml:id = substring-after($t, '#')]//tei:witness/@xml:id                           return concat('#', $w))                     else if (//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)                     then tokenize(normalize-space(string(//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)), '\s+')                     else $t)[. != '#ε']"/>
+         <let name="nst_parent_exp"
+              value="distinct-values(for $t in $nst_parent_l1 return                     if (//tei:listWit[@xml:id = substring-after($t, '#')])                     then (for $w in //tei:listWit[@xml:id = substring-after($t, '#')]//tei:witness/@xml:id                           return concat('#', $w))                     else if (//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)                     then tokenize(normalize-space(string(//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)), '\s+')                     else $t)[. != '#ε']"/>
+         <let name="nst_inner_l1"
+              value="distinct-values(for $t in $nst_inner_raw return                     if (//tei:listWit[@xml:id = substring-after($t, '#')])                     then (for $w in //tei:listWit[@xml:id = substring-after($t, '#')]//tei:witness/@xml:id                           return concat('#', $w))                     else if (//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)                     then tokenize(normalize-space(string(//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)), '\s+')                     else $t)[. != '#ε']"/>
+         <let name="nst_inner_exp"
+              value="distinct-values(for $t in $nst_inner_l1 return                     if (//tei:listWit[@xml:id = substring-after($t, '#')])                     then (for $w in //tei:listWit[@xml:id = substring-after($t, '#')]//tei:witness/@xml:id                           return concat('#', $w))                     else if (//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)                     then tokenize(normalize-space(string(//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)), '\s+')                     else $t)[. != '#ε']"/>
+         <assert test="not(parent::tei:lem[@wit]) or empty($nst_parent_raw)                   or (every $w in $nst_inner_exp satisfies $w = $nst_parent_exp)">
+                Nested app: a witness cited by an inner lem/rdg (after expanding family
+                sigla) is not covered by the @wit of the enclosing lem.
               </assert>
-         <assert test="not(parent::tei:lem[@wit])                   or empty(tokenize(normalize-space(parent::tei:lem/@wit), '\s+')[. != '#ε'])                   or (tei:lem|tei:rdg)/@wit[contains(concat(' ', normalize-space(.), ' '), ' #ε ')]                   or (every $w in tokenize(normalize-space(parent::tei:lem/@wit), '\s+')[. != '#ε']                       satisfies $w = distinct-values(for $a in (tei:lem|tei:rdg)/@wit                         return tokenize(normalize-space($a), '\s+')))">
-                Nested app: a witness of the enclosing lem takes no position in the
-                inner apparatus (waived when the inner apparatus has an epsilon member).
+         <assert test="not(parent::tei:lem[@wit]) or empty($nst_parent_raw)                   or (tei:lem|tei:rdg)/@wit[contains(concat(' ', normalize-space(.), ' '), ' #ε ')]                   or (every $w in $nst_parent_exp satisfies $w = $nst_inner_exp)">
+                Nested app: a witness of the enclosing lem (after expanding family sigla)
+                takes no position in the inner apparatus (waived when the inner apparatus
+                has an epsilon member).
               </assert>
       </rule>
    </pattern>
