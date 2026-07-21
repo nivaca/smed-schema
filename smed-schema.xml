@@ -1075,17 +1075,16 @@
         
         <!-- ========================== END APPARATUS RULES ========================== -->
 
-        <constraintSpec ident="app-no-epsilon-with-A-T-rule" scheme="schematron">
-          <desc>Disallows app elements containing both lem with wit="#ε" and rdg with wit containing any letter between A and T</desc>
-          <constraint>
-            <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:app[tei:lem[contains(@wit, '#ε')]]">
-              <report test="tei:rdg[matches(@wit, '#[A-T](\s|$)')]">
-                An app element containing a lem with wit="#ε" cannot contain a rdg with wit attribute 
-                having a letter between A and T.
-              </report>
-            </rule>
-          </constraint>
-        </constraintSpec>
+        <!-- app-no-epsilon-with-A-T-rule ELIMINADA (2026-07-19).
+             Presuponía que un lem épsilon nunca coexiste con siglas reales en el
+             mismo app; ese supuesto quedó derogado por (a) los aparatos anidados
+             dentro de un lem épsilon y (b) los rdg de inversión que registran
+             transposición de cláusula frente al texto de la edición. Con el
+             inventario de familias vigente (δ=A-I, κ=J-T) el rango A-T cubre casi
+             toda la tradición, de modo que la regla penalizaba la variación normal.
+             Verificado: 0 casos legítimos en el corpus. La clausura de testigos
+             de aparatos anidados (en app-basic-structure-rules) cubre el terreno
+             que esta regla pretendía vigilar, de forma correcta. -->
         
         
         

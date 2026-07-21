@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-07-20T14:45:03Z. . 
+Schema generated from ODD source 2026-07-21T13:45:02Z. . 
 TEI Edition: Version 3.1.0. Last updated on 15th December 2016, revision d3f5e70 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/3.1.0/ 
   
@@ -13498,17 +13498,7 @@ The attributes @to and @from on <name/> may each contain only a single value</re
       </rule>
    </pattern>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="smed-app-no-epsilon-with-A-T-rule-constraint-rule-38">
-      <rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
-            context="tei:app[tei:lem[contains(@wit, '#ε')]]">
-         <report test="tei:rdg[matches(@wit, '#[A-T](\s|$)')]">
-                An app element containing a lem with wit="#ε" cannot contain a rdg with wit attribute 
-                having a letter between A and T.
-              </report>
-      </rule>
-   </pattern>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="smed-who-must-resolve-constraint-rule-39">
+            id="smed-who-must-resolve-constraint-rule-38">
       <rule xmlns:rng="http://relaxng.org/ns/structure/1.0" context="*[@who]">
          <assert test="every $t in tokenize(normalize-space(@who), '\s+')                 satisfies (starts-with($t, '#')                 and exists(//*[@xml:id = substring-after($t, '#')]))">
                 Every @who pointer must be a local reference resolving to a
