@@ -1,0 +1,194 @@
+#+TITLE: Regla @wit: obligatoriedad del prefijo «#» en lem/rdg
+#+DATE: 2026-07-31
+#+OPTIONS: toc:nil
+
+* 1. Qué se ha añadido
+
+Una asersión Schematron nueva —más un diagnóstico complementario— *fusionada dentro
+de la regla ya existente* =app-basic-structure-rules= (contexto =tei:app=), en
+=smed-schema.xml=.
+
+#+begin_src xml
+<let name="wit_tokens" value="tokenize(normalize-space(string-join((tei:lem|tei:rdg|tei:rdgGrp/tei:lem|tei:rdgGrp/tei:rdg)/@wit, ' ')), '\s+')[. != '']"/>
+<assert test="every $t in $wit_tokens satisfies starts-with($t, '#')">
+  Every witness siglum in @wit on lem/rdg must be a local pointer prefixed with
+  '#' (e.g. wit="#BenSM #A"). Offending token(s):
+  <value-of select="string-join($wit_tokens[not(starts-with(., '#'))], ' ')"/>
+</assert>
+#+end_src
+
+Ubicación exacta en el archivo revisado: líneas 940–973 (el =<desc>= del
+=constraintSpec= se amplía en 860–863). El fichero pasa de 1109 a 1149 líneas.
+
+* 2. Por qué en el contexto =tei:app= y no en =tei:lem= / =tei:rdg=
+
+Lo natural sería un =constraintSpec= propio con contexto
+=tei:lem[@wit]|tei:rdg[@wit]=. Lo he descartado por la casuística de sombreado
+(«first-match shadowing») ya documentada en el propio esquema:
+
+- =tei:rdg= está ocupado por =rdg-must-have-wit-or-source= (línea 940 del archivo
+  original). Un contexto =tei:rdg[@wit]= es un *subconjunto* suyo.
+- =tei:lem= aparece en =empty-lemma-corresp-attribute= (=tei:lem[not(*)][not(normalize-space())]=)
+  y en las tres reglas =conjecture-*=. Cualquier =tei:lem[@wit]= solaparía con ellas.
+
+=tei:app= es el único contexto que (a) ya existe, (b) dispara demostrablemente y
+(c) domina la totalidad de los =lem=/=rdg= del corpus, puesto que ambos elementos
+solo pueden aparecer dentro de =app= (directamente o vía =rdgGrp=). Además hay
+precedente: la comprobación de testigos repetidos ya lee =*/@wit= desde ese mismo
+contexto.
+
+*Contrapartida*: el mensaje de error se localiza en el =app=, no en el =lem= o
+=rdg= concreto. Lo compenso listando los tokens infractores con =value-of=.
+
+Si en algún momento verificas que tu cadena ODD→RNG→Schematron genera *un
+=sch:pattern= por =constraintSpec== (y por tanto no hay sombreado entre
+=constraintSpec= distintos), la alternativa preferible sería:
+
+#+begin_src xml
+<constraintSpec ident="wit-must-be-pointer" scheme="schematron">
+  <constraint>
+    <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:lem[@wit]|tei:rdg[@wit]">
+      <assert test="every $t in tokenize(normalize-space(@wit), '\s+') satisfies starts-with($t, '#')">
+        Every siglum in @wit must be prefixed with '#'.
+      </assert>
+    </rule>
+  </constraint>
+</constraintSpec>
+#+end_src
+
+que da localización exacta. La prueba decisiva es barata: comenta el =<report>=
+de =rdg-must-have-wit-or-source= y comprueba si las reglas =tei:rdg[@type=…]=
+siguen disparando. Si siguen disparando con esa regla activa, no hay sombreado
+entre patrones y puedes migrar a la versión localizada.
+
+* 3. Fundamento filológico-técnico
+
+Una sigla desnuda (=wit="BenSM"=) es un =teidata.pointer= *legal*: una referencia
+URI relativa. RelaxNG la acepta sin decir nada. Pero todo el aparato de
+resolución del proyecto —incluida la expansión de siglas de familia de la propia
+regla =app-basic-structure-rules=— opera con =substring-after(., '#')=, que
+devuelve la cadena vacía ante un token sin prefijo. Consecuencia: la sigla se
+trata como hoja opaca, y las comprobaciones de clausura de testigos *sub-informan
+sin emitir diagnóstico*. Es exactamente el patrón de fallo silencioso que el
+esquema viene combatiendo.
+
+* 4. Auditoría del corpus (=salmarc_ed_lat-2026-07-17.xml=)
+
+Total de =@wit= sobre =lem=/=rdg=/=rdgGrp=: *4566*. Infracciones: *7 elementos*.
+
+| línea | elem. | token(s) infractor(es) | corrección propuesta | confianza |
+|-------+-------+------------------------+----------------------+-----------|
+|  4410 | lem   | =ε=                    | =#ε=                 | alta      |
+|  4698 | lem   | =π= (final del valor)  | =#π=                 | alta      |
+| 11461 | rdg   | =Π= (final del valor)  | =#π=                 | media     |
+| 13675 | lem   | =BenSM= (inicial)      | =#BenSM=             | alta      |
+| 17350 | lem   | =BenSM= (inicial)      | =#BenSM=             | alta      |
+| 17365 | lem   | =BenSM= (inicial)      | =#BenSM=             | alta      |
+| 18862 | lem   | =U+00A0= inicial       | eliminar el carácter | alta      |
+
+Dos observaciones sobre los casos no triviales:
+
+** 11461: =Π= mayúscula
+El valor termina en =Π= (U+03A0, *pi mayúscula griega*), mientras que la sigla de
+familia declarada es =π= (U+03C0, minúscula). No es solo cuestión de prefijo:
+=#Π= tampoco resolvería. Requiere tu criterio, aunque todo apunta a =#π=: el
+contexto es un =rdg= que cita =#A…#R= más el bloque impreso.
+
+** 18862: espacio invisible
+El atributo empieza por un *espacio duro* (U+00A0) seguido de =#BenSM=. Es un
+hallazgo colateral de esta regla y merece énfasis: la expresión regular =\s= de
+XPath solo cubre =#x20 #x9 #xD #xA=, de modo que un U+00A0 *no es frontera de
+token*. El =tokenize()= de la nueva asersión produce el token =«&#xA0;#BenSM»=,
+que falla el =starts-with('#')= y por tanto sí se detecta —pero con un mensaje
+ilegible, porque el carácter culpable es invisible. Por eso he añadido un
+=<report>= complementario (marcado como opcional en el comentario del esquema)
+que nombra el defecto explícitamente:
+
+#+begin_src xml
+<report test="(tei:lem|tei:rdg|tei:rdgGrp/tei:lem|tei:rdgGrp/tei:rdg)/@wit[matches(., '[&#xA0;&#x2007;&#x2009;&#x202F;&#x200B;&#xFEFF;]')]">
+  @wit contains a non-breaking or zero-width whitespace character: witness
+  sigla must be separated by ordinary spaces only.
+</report>
+#+end_src
+
+Nota: el filtrado por =Python str.split()= *no* detecta este caso, porque
+=split()= sí trata U+00A0 como espacio. Solo aparece bajo semántica XPath.
+
+* 5. Hallazgo adyacente, fuera del alcance de esta regla
+
+Punteros correctamente prefijados pero *no resolubles* (ningún =@xml:id= los
+declara, ni en =salmarc_ed_lat= ni en =Witnesses-2026-07-19.xml=):
+
+| línea | valor de @wit             | tokens no resueltos     |
+|-------+---------------------------+-------------------------|
+|   960 | =#P1 #P2 #P3 #Q #R #S #T= | =#P1=, =#P2=, =#P3=     |
+|  7910 | =#ZiolSM=                 | =#ZiolSM=               |
+|  7914 | =#ZiolSM2=                | =#ZiolSM2=              |
+|  7919 | =#ZiolSM3=                | =#ZiolSM3=              |
+| 21520 | =#EK=                     | =#EK=                   |
+
+Si quieres cerrarlo, la regla es simétrica a =who-must-resolve= y cabría en el
+mismo bloque; pero exige antes decidir si =P1–P3=, =ZiolSM1–3= y =EK= deben
+declararse como =witness= en el =listWit= (¿ediciones impresas? ¿subtestigos de
+=P=?) o si son restos de una convención anterior.
+
+* 6. Verificación
+
+Comprobado con Saxon (=saxonche=, XPath 3.1) sobre el corpus completo:
+
+- asersión de prefijo: *7* =app= disparan, coincidentes con la tabla de §4;
+- =report= de espacio invisible: *1* =app= dispara (línea 18862);
+- =smed-schema.xml= revisado: bien formado.
+
+Pendiente en tu entorno: regenerar el RNG/Schematron desde el ODD y pasar
+=validate-all.sh= (RelaxNG + Schematron, sin cortocircuito), para confirmar que
+el nuevo =<let>= no altera la compilación de la regla =tei:app=. Advertencia
+sobre el orden: he colocado =<let>= *después* de las asersiones anidadas, igual
+que el esquema ya coloca =<let>= después de los =<report>= iniciales; si tu
+procesador validara el Schematron contra la gramática ISO estricta (=let*= antes
+de =assert=/=report=), habría que subir los dos bloques =<let>= al principio de
+la regla. El esquema actual ya viola ese orden y funciona, de modo que el riesgo
+es bajo.
+
+* Apéndice A. Reproducir la auditoría (Python + lxml)
+
+#+begin_src python
+from lxml import etree
+TEI = '{http://www.tei-c.org/ns/1.0}'
+t = etree.parse('salmarc_ed_lat-2026-07-17.xml')
+for el in t.iter():
+    if not isinstance(el.tag, str):
+        continue
+    if el.tag not in (TEI+'lem', TEI+'rdg', TEI+'rdgGrp'):
+        continue
+    w = el.get('wit')
+    if not w:
+        continue
+    # semántica XPath: \s == #x20 #x9 #xD #xA (NO U+00A0)
+    import re
+    toks = [x for x in re.split(r'[ \t\r\n]+', w) if x]
+    bad = [x for x in toks if not x.startswith('#')]
+    if bad:
+        print(el.sourceline, etree.QName(el).localname, bad, '|', repr(w))
+#+end_src
+
+* Apéndice B. Reproducir la verificación (Saxon)
+
+#+begin_src python
+from saxonche import PySaxonProcessor
+SEL = "$a/(tei:lem|tei:rdg|tei:rdgGrp/tei:lem|tei:rdgGrp/tei:rdg)/@wit"
+TOK = f"tokenize(normalize-space(string-join({SEL}, ' ')), '\\s+')[. != '']"
+q = (f"for $a in //tei:app return "
+     f"if (every $t in {TOK} satisfies starts-with($t, '#')) then () "
+     f"else string-join({TOK}[not(starts-with(., '#'))], ' ')")
+with PySaxonProcessor(license=False) as proc:
+    xp = proc.new_xpath_processor()
+    xp.declare_namespace('tei', 'http://www.tei-c.org/ns/1.0')
+    xp.set_context(file_name='salmarc_ed_lat-2026-07-17.xml')
+    r = xp.evaluate(q)
+    print([str(r.item_at(i)) for i in range(r.size)])
+#+end_src
+
+Nota: el procesador XPath de =saxonche= rechaza =let … return= (es sintaxis
+XPath 3.0+/XQuery, no XPath 2.0), de ahí la duplicación de =TOK= en la consulta.
+Dentro de Schematron esto no aplica: =sch:let= se compila a =xsl:variable=.

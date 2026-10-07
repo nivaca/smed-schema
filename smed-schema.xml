@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xml:lang="en" xmlns="http://www.tei-c.org/ns/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" >
@@ -579,7 +579,7 @@
                       <item n="6">auferre ⟺ afferre</item>
                     </list>
                   </desc>
-                  <remarks>
+                  <remarks ident="as-dis">
                     <ab n="2">
                       cumque ⟺ cunque: The "m" changes to "n", 
                       a velar nasal (/ŋ/) that is articulated in
@@ -716,7 +716,7 @@
                       <item n="3">persequutione ⟺ persecutione</item>
                     </list>
                   </desc>
-                  <remarks>
+                  <remarks ident="syn-epen">
                     <ab n="3">
                       The transformation from "persequutione" to "persecutione" 
                       is a case of vowel syncope, where the unstressed "u"
@@ -741,7 +741,7 @@
                       <item n="5">excitatio ⟺ excitacio (ti⟺ci)</item>
                     </list>
                   </desc>
-                  <remarks>
+                  <remarks ident="sep">
                     <ab n="5">"tio" (two syllables: /ti-o/) is simplified in "cio" (one syllable: /t͡ʃo/)</ab>
                   </remarks>
                 </valItem>
@@ -795,6 +795,9 @@
         
         <!-- analysis module -->
         <moduleRef key="analysis"/>
+        
+        <!-- Figures module -->
+        <moduleRef key="figures" include="figure figDesc"/>
         
         <!-- attribute class modifications -->
         
@@ -857,7 +860,13 @@
             reading — every witness of the enclosing lem/rdg must take a position in the inner
             apparatus, and the inner apparatus must not cite witnesses foreign to it. Merged into
             this rule (rather than a separate constraintSpec with the subset context
-            tei:app[parent::tei:lem]) per the house principle against subset-context shadowing.</desc>
+            tei:app[parent::tei:lem]) per the house principle against subset-context shadowing.
+            Additionally: @wit pointer-syntax check (2026-07-31). Every witness siglum cited by
+            a lem or an rdg must be prefixed with '#'; bare sigla pass RelaxNG (they are legal
+            relative URI references) but silently defeat every substring-after(., '#') based
+            resolution in this schema and in the project's tooling. Merged here for the same
+            anti-shadowing reason: the contexts tei:rdg and tei:lem[...] are already occupied
+            by other constraintSpecs.</desc>
           <constraint>
             <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:app">
               <report test="not(./tei:lem)">app must have lemma</report>
@@ -931,6 +940,40 @@
                 taking no position in the inner apparatus:
                 <value-of select="string-join($nst_parent_exp[not(. = $nst_inner_exp)], ' ')"/>
               </assert>
+              <!-- @wit POINTER SYNTAX (2026-07-31): every witness siglum cited in @wit on a
+                   lem or an rdg must be a local pointer, i.e. prefixed with '#'
+                   (wit="#BenSM #A", never wit="BenSM #A").
+                   Rationale: a bare siglum is a perfectly legal teidata.pointer — it is a
+                   relative URI reference — so RelaxNG accepts it silently. Every consumer
+                   in this project, however, resolves witnesses through
+                   substring-after(., '#'), which yields the empty string for a bare token:
+                   the family-expansion machinery above then treats the siglum as an opaque
+                   leaf and the closure checks under-report without any diagnostic.
+                   Placement: checked from the tei:app context rather than from tei:lem /
+                   tei:rdg, so as not to introduce a rule context that is a subset of an
+                   existing one (tei:rdg is already taken by "rdg-must-have-wit-or-source",
+                   and a tei:lem[@wit] rule would collide with the tei:lem contexts of
+                   "empty-lemma-corresp-attribute" and the conjecture-* rules) — house
+                   principle against subset-context shadowing.
+                   Coverage: direct lem/rdg children plus lem/rdg inside rdgGrp; the corpus
+                   contains no nested rdgGrp. A lem/rdg belonging to a nested app is covered
+                   when the rule fires on that inner app. -->
+              <let name="wit_tokens" value="tokenize(normalize-space(string-join((tei:lem|tei:rdg|tei:rdgGrp/tei:lem|tei:rdgGrp/tei:rdg)/@wit, ' ')), '\s+')[. != '']"/>
+              <assert test="every $t in $wit_tokens satisfies starts-with($t, '#')">
+                Every witness siglum in @wit on lem/rdg must be a local pointer prefixed with
+                '#' (e.g. wit="#BenSM #A"). Offending token(s):
+                <value-of select="string-join($wit_tokens[not(starts-with(., '#'))], ' ')"/>
+              </assert>
+              <!-- Companion diagnostic (optional but recommended): XPath's \s matches only
+                   #x20 #x9 #xD #xA, so a no-break space or a zero-width character used as a
+                   separator inside @wit is NOT a token boundary. The assert above does catch
+                   the case — the token comes out as "&#xA0;#BenSM" and fails starts-with('#')
+                   — but the message is unreadable because the offending character is
+                   invisible. This report names the defect explicitly. -->
+              <report test="(tei:lem|tei:rdg|tei:rdgGrp/tei:lem|tei:rdgGrp/tei:rdg)/@wit[matches(., '[&#xA0;&#x2007;&#x2009;&#x202F;&#x200B;&#xFEFF;]')]">
+                @wit contains a non-breaking or zero-width whitespace character: witness
+                sigla must be separated by ordinary spaces only.
+              </report>
             </rule>
           </constraint>
         </constraintSpec>
