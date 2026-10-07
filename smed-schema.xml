@@ -251,9 +251,12 @@
           </constraint>
         </constraintSpec>
         
+        <!-- tei module -->
         <moduleRef key="tei"/>
+        
         <!-- header module -->
         <moduleRef key="header"/>
+        
         <!-- header rules -->
         <!-- titleStmt rules -->
         <constraintSpec ident="missing-author-rule" scheme="schematron">
@@ -356,8 +359,10 @@
         
         <!-- END HEADER RULES -->
         
+        
         <!-- text structure module -->
         <moduleRef key="textstructure"/>
+        
         <!-- rules for front -->
         <constraintSpec ident="front-element-must-be-present" scheme="schematron">
           <desc>Front element must be present</desc>
@@ -414,7 +419,8 @@
         
         
         <!-- linking module -->
-        <moduleRef key="linking"/>
+        <!-- seg, corresp, ab -->
+        <moduleRef key="linking" include="seg corresp ab"/>
         
         <elementSpec ident="seg" module="core" mode="change">
           <attList>
@@ -442,12 +448,12 @@
         <!-- Name and Date Module -->
         <moduleRef key="namesdates"/>
         
+        <!-- Corpus module -->
+        <!-- particDesc -->
+        <moduleRef key="corpus" include="particDesc"/>
         
-        <moduleRef key="corpus"/>
-        
-        
-        
-        <!-- Text Criticism Module -->
+        <!-- Textual Criticism Module -->
+        <!-- app, rdg, lem, listWit, etc. -->
         <moduleRef key="textcrit"/>
         
         <elementSpec ident="rdg" module="textcrit" mode="change">
@@ -782,19 +788,12 @@
         </elementSpec>
         
         
-        <!-- Primary Source Transcription Module -->
+        <!-- transcription module -->
+        <!-- supplied, change, etc.-->
         <moduleRef key="transcr"/>
         
-        <!-- Ms Description Module -->
-        <!-- not sure what elements need here; but I will probably need a lot more elements for the official bibliographyy of the mansucript witnesses -->
-<!--        <moduleRef key="msdescription"/>-->
-        
-        <!-- Character and Glyph Documentat Module -->
-        <!-- may not be necessary once <pc> element replaces glyps -->
-        <moduleRef key="gaiji"/>
-        
         <!-- analysis module -->
-        <moduleRef key="analysis"/>
+        <moduleRef key="analysis" include="ana"/>
         
         <!-- Figures module -->
         <moduleRef key="figures" include="figure figDesc"/>
