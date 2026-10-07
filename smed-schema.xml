@@ -786,8 +786,8 @@
         <moduleRef key="transcr"/>
         
         <!-- Ms Description Module -->
-        <!-- not sure what elements need here; but I will probably need a lot more elements for the official bibliographyy of the mansucriopt witnesses -->
-        <moduleRef key="msdescription"/>
+        <!-- not sure what elements need here; but I will probably need a lot more elements for the official bibliographyy of the mansucript witnesses -->
+<!--        <moduleRef key="msdescription"/>-->
         
         <!-- Character and Glyph Documentat Module -->
         <!-- may not be necessary once <pc> element replaces glyps -->
