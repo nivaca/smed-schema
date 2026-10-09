@@ -441,10 +441,6 @@
         </elementSpec>
         
         
-        
-        
-        
-        
         <!-- Name and Date Module -->
         <moduleRef key="namesdates"/>
         
@@ -456,15 +452,20 @@
         <!-- app, rdg, lem, listWit, etc. -->
         <moduleRef key="textcrit"/>
         
-        <elementSpec ident="rdg" module="textcrit" mode="change">
+        <!-- ===================== SHARED READING TYPES (2026-10-09) =====================
+             rdg, rdgGrp and lem all inherit @type from the class att.textCritical
+             (which itself inherits att.typed). The reading-type vocabulary is therefore
+             defined ONCE, here, on att.textCritical, and rdg and rdgGrp share it with
+             no further declaration. To add or change a reading type, edit ONLY the
+             valList below.
+             NOTE: do NOT define @type in a new class, and do NOT redefine it at
+             element level in rdg or rdgGrp unless intended: a second definition
+             alongside att.textCritical's yields 'duplicate attribute "type"' in Jing.
+             lem overrides this list with its own narrower, conjecture-only list
+             (see elementSpec[lem]). -->
+        <classSpec ident="att.textCritical" type="atts" mode="change">
           <attList>
-            <attDef ident="type" mode="change" usage="rec">
-              <!-- The Schematron rules for the apparatus (app / lem / rdg) formerly
-                   lived here, inside attDef[type]. Relocated to schemaSpec level
-                   (see "APPARATUS RULES" below) so they no longer depend on the
-                   lifecycle of this attDef: had this attribute definition ever been
-                   removed or its @mode changed, the rules would have vanished with
-                   it silently. Only the valList remains here. -->
+            <attDef ident="type" usage="rec" mode="change">
               <valList type="semi" mode="add">
                 <!-- variation rdg types -->
                 <valItem ident="variation-absent">
@@ -550,10 +551,15 @@
                   <desc>manual rdg type input</desc>
                 </valItem>
               </valList>
-              
-              
             </attDef>
-            
+          </attList>
+        </classSpec>
+        
+        <elementSpec ident="rdg" module="textcrit" mode="change">
+          <attList>
+            <!-- @type now comes from att.textCritical (see above); the Schematron rules
+                 for the apparatus (app / lem / rdg) live at schemaSpec level (see
+                 "APPARATUS RULES" below). Only @ana remains defined here. -->
             <attDef ident="ana" mode="change" usage="opt"
               xml:lang="eng">
               <valList type="closed" mode="add">
@@ -747,7 +753,7 @@
                       <item n="5">excitatio ⟺ excitacio (ti⟺ci)</item>
                     </list>
                   </desc>
-                  <remarks ident="sep">
+                  <remarks ident="vow">
                     <ab n="5">"tio" (two syllables: /ti-o/) is simplified in "cio" (one syllable: /t͡ʃo/)</ab>
                   </remarks>
                 </valItem>
@@ -757,18 +763,19 @@
                 </valItem>
               </valList>
             </attDef>
-            
           </attList>
-          
         </elementSpec>
         
+        <!-- rdgGrp needs no elementSpec: it inherits @type from att.textCritical. -->
         
         
         <!-- The lem element -->
         <elementSpec ident="lem" module="textcrit" mode="change">
           <attList>
             <attDef ident="type" mode="change" usage="opt">
-              <valList type="semi" mode="add">
+              <!-- replace: lem keeps ONLY the conjecture types, not the full
+                   reading-type list now carried by att.textCritical -->
+              <valList type="semi" mode="replace">
                 <!-- conjecture types -->
                 <valItem ident="conjecture-supplied">
                   <gloss>conjecture-supplied</gloss>
@@ -839,7 +846,7 @@
           </attList>
         </classSpec>
         
-                <!-- ============================ APPARATUS RULES ============================
+        <!-- ============================ APPARATUS RULES ============================
              Schematron rules for app / lem / rdg. Relocated 2026-07-10 from inside
              elementSpec[rdg]/attList/attDef[type], where their survival was tied to
              that attribute definition. -->
@@ -1113,8 +1120,6 @@
           </constraint>
         </constraintSpec>
         
-        
-        
         <!-- ========================== END APPARATUS RULES ========================== -->
 
         <!-- app-no-epsilon-with-A-T-rule ELIMINADA (2026-07-19).
@@ -1128,8 +1133,6 @@
              de aparatos anidados (en app-basic-structure-rules) cubre el terreno
              que esta regla pretendía vigilar, de forma correcta. -->
         
-        
-        
         <constraintSpec ident="who-must-resolve" scheme="schematron">
           <constraint>
             <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="*[@who]">
@@ -1142,8 +1145,6 @@
             </rule>
           </constraint>
         </constraintSpec>
-        
-        
         
       </schemaSpec>
     </body>
