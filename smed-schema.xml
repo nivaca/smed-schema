@@ -33,40 +33,31 @@
         <moduleRef key="core"/>
         
         
-        <elementSpec ident="pb" module="core" mode="change">
+        <!-- @break for pb, lb (and cb, gb, milestone): defined ONCE on the class
+             att.breaking (2026-10-09), replacing identical elementSpecs for pb and lb.
+             Do not redefine @break at element level, or Jing will report
+             'duplicate attribute "break"'. -->
+        <classSpec ident="att.breaking" type="atts" mode="change">
           <attList>
             <attDef ident="break" usage="opt" mode="change">
               <valList type="closed" mode="add">
                 <valItem ident="yes">
                   <gloss>yes</gloss>
-                  <desc>milestone breaks a word in two</desc>
+                  <desc>the milestone marks the end of an orthographic token, as whitespace
+                    would: the word is NOT split across it</desc>
                 </valItem>
                 <valItem ident="no">
                   <gloss>no</gloss>
-                  <desc>milestone doen not break a word in two</desc>
+                  <desc>the milestone does not mark the end of a token: a word is split
+                    across it (e.g. a word hyphenated at a line break)</desc>
                 </valItem>
               </valList>
             </attDef>
           </attList>
-        </elementSpec>
+        </classSpec>
         
         
-        <elementSpec ident="lb" module="core" mode="change">
-          <attList>
-            <attDef ident="break" usage="opt" mode="change">
-              <valList type="closed" mode="add">
-                <valItem ident="yes">
-                  <gloss>yes</gloss>
-                  <desc>milestone breaks a word in two</desc>
-                </valItem>
-                <valItem ident="no">
-                  <gloss>no</gloss>
-                  <desc>milestone doen not break a word in two</desc>
-                </valItem>
-              </valList>
-            </attDef>
-          </attList>
-        </elementSpec>
+        <!-- lb: @break now comes from att.breaking (see above) -->
         
         
         <elementSpec ident="q" module="core" mode="change">
@@ -144,7 +135,7 @@
                 </valItem>
                 <valItem ident="underline">
                   <gloss>underline</gloss>
-                  <desc>A deletion indicated by underling the word or segment</desc>
+                  <desc>A deletion indicated by underlining the word or segment</desc>
                 </valItem>
                 <valItem ident="erasure">
                   <gloss>erasure</gloss>
@@ -157,46 +148,11 @@
         <!-- end del element -->
         
         <!-- begin add element -->
-        <elementSpec ident="add" module="core" mode="change">
-          <attList>
-            <attDef ident="place" usage="rec" mode="change">
-              <valList type="semi" mode="add">
-                <valItem ident="margin">
-                  <gloss>margin</gloss>
-                  <desc>A generic place locator for an addition appearing in some margin</desc>
-                </valItem>
-                <valItem ident="margin-right">
-                  <gloss>margin-right</gloss>
-                  <desc>Indicates an addition in the margin to the right of the text in question</desc>
-                </valItem>
-                <valItem ident="margin-left">
-                  <gloss>margin-left</gloss>
-                  <desc>Indicates an addition in the margin to the left of the text in question</desc>
-                </valItem>
-                <valItem ident="margin-above">
-                  <gloss>margin-above</gloss>
-                  <desc>Indicates an addition in the margin to the above of the text in question</desc>
-                </valItem>
-                <valItem ident="margin-below">
-                  <gloss>margin-below</gloss>
-                  <desc>Indicates an addition in the margin to the below of the text in question</desc>
-                </valItem>
-                <valItem ident="above-line">
-                  <gloss>above-line</gloss>
-                  <desc>Indicates an addition inserted above the line in question</desc>
-                </valItem>
-                <valItem ident="below-line">
-                  <gloss>below-line</gloss>
-                  <desc>Indicates an addition inserted below the line in question</desc>
-                </valItem>
-                <valItem ident="in-line">
-                  <gloss>in-line</gloss>
-                  <desc>Indicates an addition inserted in the line</desc>
-                </valItem>
-              </valList>
-            </attDef>
-          </attList>
-        </elementSpec>
+        <!-- add: @place now comes from the class att.placement (see "attribute class
+             modifications" below), the single source of the placement vocabulary
+             (2026-10-09). The former element-level list used margin-above and
+             margin-below where the class uses margin-top and margin-bottom. -->
+        <!-- (no elementSpec for add) -->
         <!-- end add element -->
         
         <!-- ==================================================================
@@ -278,7 +234,7 @@
             <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="/tei:TEI/tei:teiHeader[1]/tei:fileDesc[1]/tei:editionStmt[1]/tei:edition[1]">
               <report test="not(./@n)">Edition element must indicate edition number with n attribute of the form x.x.x or x.x.x-dev</report>
               <report test="./@n and not(matches(@n, '^\d+\.\d+\.\d+(-dev)?$'))">Edition n attribute must have the form x.x.x or x.x.x-dev</report>
-              <report test="not(./tei:date)">EditionStmt Edition must have an date element as child</report>
+              <report test="not(./tei:date)">EditionStmt Edition must have a date element as child</report>
               <report test="./tei:date and not(./tei:date/@when)">EditionStmt Edition Date must have a when attribute</report>
             </rule>
           </constraint>
@@ -420,9 +376,9 @@
         
         <!-- linking module -->
         <!-- seg, corresp, ab -->
-        <moduleRef key="linking" include="seg corresp ab"/>
+        <moduleRef key="linking" include="seg ab"/>
         
-        <elementSpec ident="seg" module="core" mode="change">
+        <elementSpec ident="seg" module="linking" mode="change">
           <attList>
             <attDef ident="ana" usage="opt" mode="change">
               <valList type="closed" mode="add">
@@ -507,7 +463,7 @@
                 <valItem ident="correction-substitution">
                   <gloss>correction-substitution</gloss>
                   <desc>Indicates that the witness in question has deleted a word
-                    and then added a word to replaces the deletion.</desc>
+                    and then added a word to replace the deletion.</desc>
                 </valItem>
                 <valItem ident="correction-transposition">
                   <gloss>correction-transposition</gloss>
@@ -529,13 +485,13 @@
                 </valItem>
                 <valItem ident="substitution-of-addition">
                   <gloss>Correction cancellation: substitution-of-addition</gloss>
-                  <desc>Indicates that a witness has is not only cancelling an addition (as in the case of deletion-of-addition)
+                  <desc>Indicates that a witness is not only cancelling an addition (as in the case of deletion-of-addition)
                     but is also supplying a new word or phrase to take the old addition's place.</desc>
                 </valItem>
                 <!-- conjecture types -->
                 <valItem ident="conjecture-supplied">
                   <gloss>conjecture-supplied</gloss>
-                  <desc>According to the the judgement of the editor, an expression is missing from the transmitted text.</desc>
+                  <desc>According to the judgement of the editor, an expression is missing from the transmitted text.</desc>
                 </valItem>
                 <valItem ident="conjecture-removed">
                   <gloss>conjecture-removed</gloss>
@@ -580,7 +536,7 @@
                   </desc>
                 </valItem>
                 <valItem ident="as/dis">
-                  <gloss>assimilation/dissimilartion</gloss>
+                  <gloss>assimilation/dissimilation</gloss>
                   <desc>e.g. 
                     <list>
                       <item n="1">bergario ⟺ bergatio</item>
@@ -669,7 +625,7 @@
                 </valItem>
                 <valItem ident="len/fort">
                   <gloss>consonant lenition/fortition</gloss>
-                  <desc>The softening (lenition) or strenghtening (fortition) of a consonant,
+                  <desc>The softening (lenition) or strengthening (fortition) of a consonant,
                     e.g. 
                     <list>
                       <item>gibbosus ⟺ gipposus</item>
@@ -779,7 +735,7 @@
                 <!-- conjecture types -->
                 <valItem ident="conjecture-supplied">
                   <gloss>conjecture-supplied</gloss>
-                  <desc>According to the the judgement of the editor, an expression is missing from the transmitted text.</desc>
+                  <desc>According to the judgement of the editor, an expression is missing from the transmitted text.</desc>
                 </valItem>
                 <valItem ident="conjecture-removed">
                   <gloss>conjecture-removed</gloss>
@@ -800,6 +756,9 @@
         <moduleRef key="transcr"/>
         
         <!-- analysis module -->
+        <!-- NOTE: "ana" is an attribute (att.global.analytic), not an element, so this
+             include list names no elements: only the module's attribute classes are
+             pulled in (this is intended). To also allow interp, span, etc., list them here. -->
         <moduleRef key="analysis" include="ana"/>
         
         <!-- Figures module -->
@@ -815,6 +774,14 @@
                 <valItem ident="above-line">
                   <gloss>Above Line</gloss>
                   <desc>Inter-linearly, above the line in which it is being inserted</desc>
+                </valItem>
+                <valItem ident="below-line">
+                  <gloss>Below Line</gloss>
+                  <desc>Inter-linearly, below the line in which it is being inserted</desc>
+                </valItem>
+                <valItem ident="margin">
+                  <gloss>Margin</gloss>
+                  <desc>Generic locator for something in some margin of the page, when the specific margin is not recorded</desc>
                 </valItem>
                 <valItem ident="margin-left">
                   <gloss>Left Margin</gloss>
@@ -1082,15 +1049,15 @@
           <desc>Requires that rdg have a del child element when rdg has type=correction-deletion</desc>
           <constraint>
             <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:rdg[@type='correction-deletion']">
-              <report test="not(./tei:del)">This is a rdg type=correction-deletion. The rdg must contain an del element</report>
+              <report test="not(./tei:del)">This is a rdg type=correction-deletion. The rdg must contain a del element</report>
             </rule>
           </constraint>
         </constraintSpec>
         <constraintSpec ident="correction-substitution-rule" scheme="schematron">
-          <desc>Requires that rdg have a del child element when rdg has type=correction-substitution</desc>
+          <desc>Requires that rdg have a subst child element when rdg has type=correction-substitution</desc>
           <constraint>
             <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:rdg[@type='correction-substitution']">
-              <report test="not(./tei:subst)">This is a rdg type=correction-substitution. The rdg must contain an subst element</report>
+              <report test="not(./tei:subst)">This is a rdg type=correction-substitution. The rdg must contain a subst element</report>
             </rule>
           </constraint>
         </constraintSpec>
