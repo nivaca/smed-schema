@@ -873,32 +873,32 @@
               <let name="nst_inner_raw" value="distinct-values(for $a in (tei:lem|tei:rdg)/@wit
                     return tokenize(normalize-space($a), '\s+'))[. != '#ε']"/>
               <let name="nst_parent_l1" value="distinct-values(for $t in $nst_parent_raw return
-                    if (//tei:listWit[@xml:id = substring-after($t, '#')])
-                    then (for $w in //tei:listWit[@xml:id = substring-after($t, '#')]//tei:witness/@xml:id
+                    if (id(substring-after($t, '#'))[self::tei:listWit])
+                    then (for $w in id(substring-after($t, '#'))[self::tei:listWit]//tei:witness/@xml:id
                           return concat('#', $w))
-                    else if (//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)
-                    then tokenize(normalize-space(string(//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)), '\s+')
+                    else if (id(substring-after($t, '#'))[self::tei:witness]/@corresp)
+                    then tokenize(normalize-space(string(id(substring-after($t, '#'))[self::tei:witness]/@corresp)), '\s+')
                     else $t)[. != '#ε']"/>
               <let name="nst_parent_exp" value="distinct-values(for $t in $nst_parent_l1 return
-                    if (//tei:listWit[@xml:id = substring-after($t, '#')])
-                    then (for $w in //tei:listWit[@xml:id = substring-after($t, '#')]//tei:witness/@xml:id
+                    if (id(substring-after($t, '#'))[self::tei:listWit])
+                    then (for $w in id(substring-after($t, '#'))[self::tei:listWit]//tei:witness/@xml:id
                           return concat('#', $w))
-                    else if (//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)
-                    then tokenize(normalize-space(string(//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)), '\s+')
+                    else if (id(substring-after($t, '#'))[self::tei:witness]/@corresp)
+                    then tokenize(normalize-space(string(id(substring-after($t, '#'))[self::tei:witness]/@corresp)), '\s+')
                     else $t)[. != '#ε']"/>
               <let name="nst_inner_l1" value="distinct-values(for $t in $nst_inner_raw return
-                    if (//tei:listWit[@xml:id = substring-after($t, '#')])
-                    then (for $w in //tei:listWit[@xml:id = substring-after($t, '#')]//tei:witness/@xml:id
+                    if (id(substring-after($t, '#'))[self::tei:listWit])
+                    then (for $w in id(substring-after($t, '#'))[self::tei:listWit]//tei:witness/@xml:id
                           return concat('#', $w))
-                    else if (//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)
-                    then tokenize(normalize-space(string(//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)), '\s+')
+                    else if (id(substring-after($t, '#'))[self::tei:witness]/@corresp)
+                    then tokenize(normalize-space(string(id(substring-after($t, '#'))[self::tei:witness]/@corresp)), '\s+')
                     else $t)[. != '#ε']"/>
               <let name="nst_inner_exp" value="distinct-values(for $t in $nst_inner_l1 return
-                    if (//tei:listWit[@xml:id = substring-after($t, '#')])
-                    then (for $w in //tei:listWit[@xml:id = substring-after($t, '#')]//tei:witness/@xml:id
+                    if (id(substring-after($t, '#'))[self::tei:listWit])
+                    then (for $w in id(substring-after($t, '#'))[self::tei:listWit]//tei:witness/@xml:id
                           return concat('#', $w))
-                    else if (//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)
-                    then tokenize(normalize-space(string(//tei:witness[@xml:id = substring-after($t, '#')]/@corresp)), '\s+')
+                    else if (id(substring-after($t, '#'))[self::tei:witness]/@corresp)
+                    then tokenize(normalize-space(string(id(substring-after($t, '#'))[self::tei:witness]/@corresp)), '\s+')
                     else $t)[. != '#ε']"/>
               <assert test="not(parent::tei:lem[@wit]) or empty($nst_parent_raw)
                   or (every $w in $nst_inner_exp satisfies $w = $nst_parent_exp)">
@@ -981,7 +981,7 @@
               <assert test="not(@corresp) or
                 (every $t in tokenize(normalize-space(@corresp), '\s+')
                  satisfies (starts-with($t, '#')
-                            and exists(//*[@xml:id = substring-after($t, '#')])))">
+                            and exists(id(substring-after($t, '#')))))">
                 Every pointer in the corresp attribute of this empty lem must be a local
                 reference (#xml:id) resolving to an element in the document.
                 <!-- Optimization note: with a Saxon-based engine, exists(id(substring-after($t,'#')))
@@ -1105,7 +1105,7 @@
             <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="*[@who]">
               <assert test="every $t in tokenize(normalize-space(@who), '\s+')
                 satisfies (starts-with($t, '#')
-                and exists(//*[@xml:id = substring-after($t, '#')]))">
+                and exists(id(substring-after($t, '#'))))">
                 Every @who pointer must be a local reference resolving to a
                 declared participant.
               </assert>
