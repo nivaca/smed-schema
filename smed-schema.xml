@@ -839,7 +839,8 @@
             relative URI references) but silently defeat every substring-after(., '#') based
             resolution in this schema and in the project's tooling. Merged here for the same
             anti-shadowing reason: the contexts tei:rdg and tei:lem[...] are already occupied
-            by other constraintSpecs.</desc>
+            by other constraintSpecs. Additionally: @wit pointer-target check (2026-11-17).
+            Every '#' siglum must name a witness or listWit declared in the document.</desc>
           <constraint>
             <rule xmlns="http://purl.oclc.org/dsdl/schematron" context="tei:app">
               <report test="not(./tei:lem)">app must have lemma</report>
@@ -936,6 +937,24 @@
                 Every witness siglum in @wit on lem/rdg must be a local pointer prefixed with
                 '#' (e.g. wit="#BenSM #A"). Offending token(s):
                 <value-of select="string-join($wit_tokens[not(starts-with(., '#'))], ' ')"/>
+              </assert>
+              <!-- @wit POINTER TARGETS (2026-11-17): every '#' token must name a witness or a
+                   listWit declared in this document. Neither RelaxNG nor the assert above
+                   catches a pointer to nothing (wit="#ZZ"): the family expansion then keeps
+                   the token as an opaque leaf, so the closure checks cannot see the mistake.
+                   #ε is a declared witness and is checked like any other siglum. Bare tokens
+                   are left to the assert above, so that one defect is not reported twice.
+                   Same placement and coverage as that assert. Uses id(), so the lookup costs
+                   nothing even in a large edition; id() needs a node as context, so the
+                   message loops with for/if (inside a predicate on $wit_tokens the context
+                   item would be a string, and id() would raise an error). -->
+              <assert test="every $t in $wit_tokens[starts-with(., '#')] satisfies
+                  exists(id(substring-after($t, '#'))[self::tei:witness or self::tei:listWit])">
+                Every witness siglum in @wit on lem/rdg must point to a witness or listWit
+                declared in this document (by its xml:id). Unresolved token(s):
+                <value-of select="string-join(for $t in $wit_tokens[starts-with(., '#')] return
+                  (if (id(substring-after($t, '#'))[self::tei:witness or self::tei:listWit])
+                   then () else $t), ' ')"/>
               </assert>
               <!-- Companion diagnostic (optional but recommended): XPath's \s matches only
                    #x20 #x9 #xD #xA, so a no-break space or a zero-width character used as a
